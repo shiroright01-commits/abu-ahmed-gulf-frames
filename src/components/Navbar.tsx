@@ -37,6 +37,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t("navHome"), href: "/" },
+    { label: t("navAbout"), href: "/about" },
     { label: t("navPortfolio"), href: "/projects" },
     { label: t("navServices"), href: "/services" },
     { label: isRTL ? "رحلة التنفيذ" : "Bespoke Process", href: "/#process" },

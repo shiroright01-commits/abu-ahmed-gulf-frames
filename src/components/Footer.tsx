@@ -195,6 +195,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/about" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "من نحن (المعلم والورشة)" : "About Master Craftsman"}</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/projects" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
                   <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
                   <span>{isRTL ? "٣٠ عملاً موثقاً" : "30 Real Works"}</span>
@@ -283,11 +289,20 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <span>
-                  {isRTL
-                    ? "المنطقة الصناعية الرئيسية، سوق الألمنيوم، باكستان"
-                    : "Main Industrial Area, Aluminum Market, Pakistan"}
-                </span>
+                <div>
+                  <a
+                    href={siteConfig.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-400 transition-colors flex items-center gap-1.5 font-medium text-slate-200"
+                  >
+                    <span>{isRTL ? siteConfig.locationAr : siteConfig.location}</span>
+                    <span className="text-[10px] text-gold-400 underline">{isRTL ? "(خرائط جوجل)" : "(Google Maps)"}</span>
+                  </a>
+                  <span className="text-[11px] text-slate-400 block mt-0.5">
+                    {isRTL ? siteConfig.locationDetailsAr : siteConfig.locationDetailsEn}
+                  </span>
+                </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <PhoneCall className="w-4 h-4 text-gold-400 shrink-0" />

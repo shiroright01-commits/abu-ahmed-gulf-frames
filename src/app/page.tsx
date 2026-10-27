@@ -5,7 +5,7 @@ import Link from "next/link";
 import { servicesData } from "@/data/servicesData";
 import ServiceCard from "@/components/ServiceCard";
 import ShutterComparison from "@/components/ShutterComparison";
-import TrustSection from "@/components/TrustSection";
+import AboutSection from "@/components/AboutSection";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import DesignJourney from "@/components/DesignJourney";
@@ -387,8 +387,8 @@ export default function HomePage() {
       {/* Technical Specifications */}
       <TechnicalSpecs />
 
-      {/* Trust & Engineering Pillars */}
-      <TrustSection />
+      {/* About Master Craftsman & Trust Pillars */}
+      <AboutSection />
 
       {/* High-Converting CTA Banner */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-8">

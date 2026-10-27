@@ -26,7 +26,7 @@ I would like to request an on-site survey and turnkey service estimate:
 - Client Name: ${name || "Client"}
 - Service Required: ${service}
 - Approximate Scope / Dimensions: ${dimensions || "To be surveyed on-site"}
-- Location: ${city || "Pakistan"}
+- Location: ${city || "Kuwait"}
 - Contact Number: ${phone}
 - Additional Specifications: ${notes || "None"}
 Please get in touch with your survey schedule and preliminary estimates.`;

@@ -416,15 +416,23 @@ Please let me know when you can schedule an on-site engineering assessment.`;
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                  <div>
+                  <div className="space-y-1">
                     <span className="font-semibold text-white block">
-                      {isRTL ? "الورشة الرئيسية للتصنيع" : "Main Fabrication Facility"}
+                      {isRTL ? "موقع الورشة المركزية" : "Central Fabrication Workshop"}
                     </span>
-                    <span className="text-slate-400">
-                      {isRTL
-                        ? "المنطقة الصناعية الرئيسية، سوق الألمنيوم، باكستان"
-                        : "Main Industrial Area, Aluminum Market, Pakistan"}
+                    <span className="text-slate-400 block">
+                      {isRTL ? siteConfig.locationDetailsAr : siteConfig.locationDetailsEn}
                     </span>
+                    <a
+                      href={siteConfig.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-gold-400 hover:underline font-semibold text-[11px] pt-1"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>{isRTL ? "فتح الموقع على خرائط جوجل" : "Open Location in Google Maps"}</span>
+                      <ArrowRight className={`w-3 h-3 ${isRTL ? "rotate-180" : ""}`} />
+                    </a>
                   </div>
                 </div>
 
