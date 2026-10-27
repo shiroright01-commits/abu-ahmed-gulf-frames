@@ -82,15 +82,16 @@ export default function RootLayout({
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Lahore",
-      "addressRegion": "Punjab",
-      "addressCountry": "PK"
+      "addressLocality": "Farwaniya",
+      "addressRegion": "Farwaniya Governorate",
+      "addressCountry": "KW"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "31.5204",
-      "longitude": "74.3587"
+      "latitude": "29.2814",
+      "longitude": "47.9603"
     },
+    "hasMap": "https://maps.app.goo.gl/vq9N7PmYdmJ1Tz2B6",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
