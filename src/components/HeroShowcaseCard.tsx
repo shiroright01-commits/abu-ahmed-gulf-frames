@@ -5,9 +5,11 @@ import Link from "next/link";
 import { projectsData } from "@/data/projectsData";
 import ImageLightboxModal from "@/components/ImageLightboxModal";
 import { ShieldCheck, ArrowRight, Maximize2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HeroShowcaseCard() {
   const [modalOpen, setModalOpen] = useState(false);
+  const { isRTL, t } = useLanguage();
   const heroWorkIndex = Math.max(
     0,
     projectsData.findIndex((p) => p.id === "work-07")
@@ -48,7 +50,7 @@ export default function HeroShowcaseCard() {
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
               <span className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-charcoal-950/90 text-gold-400 text-xs font-bold border border-gold-400/60 shadow-2xl">
                 <Maximize2 className="w-4 h-4 text-gold-400" />
-                <span>Click to View Full Photo</span>
+                <span>{t("galleryClickHint", "Click to View Full Photo")}</span>
               </span>
             </div>
 
@@ -56,10 +58,10 @@ export default function HeroShowcaseCard() {
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-charcoal-950/90 text-gold-400 text-xs font-bold border border-gold-400/40 backdrop-blur-md shadow-lg">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Verified Real Commission</span>
+                <span>{t("heroShowcaseBadge", "Verified Real Commission")}</span>
               </span>
               <span className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-black/80 text-slate-200 backdrop-blur-md border border-charcoal-700">
-                Model Town, Lahore
+                {t("heroShowcaseLocation", "Model Town, Lahore")}
               </span>
             </div>
 
@@ -70,14 +72,17 @@ export default function HeroShowcaseCard() {
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-heading font-bold text-white">
-                  Sublimated Walnut Door with Wrought-Iron Grille
+                  {t("heroShowcaseTitle", "Sublimated Walnut Door with Wrought-Iron Grille")}
                 </span>
                 <span className="text-[10px] text-gold-400 font-semibold px-2 py-0.5 rounded-md bg-gold-400/10 border border-gold-400/30">
-                  Hand-Crimped
+                  {t("heroShowcaseTag", "Hand-Crimped")}
                 </span>
               </div>
               <p className="text-[11px] text-slate-300 leading-snug">
-                Heavy 6063-T6 aluminum with integrated wrought-iron security grille encased in double safety glass.
+                {t(
+                  "heroShowcaseDesc",
+                  "Heavy 6063-T6 aluminum with integrated wrought-iron security grille encased in double safety glass."
+                )}
               </p>
               <div className="flex items-center justify-between pt-2 border-t border-charcoal-800 text-[10px] text-slate-400">
                 <button
@@ -89,14 +94,14 @@ export default function HeroShowcaseCard() {
                   className="text-gold-400 hover:text-white font-semibold flex items-center gap-1 transition-colors"
                 >
                   <Maximize2 className="w-3 h-3" />
-                  <span>Enlarge Photo</span>
+                  <span>{t("heroShowcaseEnlarge", "Enlarge Photo")}</span>
                 </button>
                 <Link
                   href="/projects"
                   className="text-gold-400 hover:text-white font-medium flex items-center gap-1 transition-colors"
                 >
-                  <span>Browse 30 Works</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <span>{t("heroShowcaseBrowse", "Browse 30 Works")}</span>
+                  <ArrowRight className={`w-3 h-3 ${isRTL ? "rotate-180" : ""}`} />
                 </Link>
               </div>
             </div>

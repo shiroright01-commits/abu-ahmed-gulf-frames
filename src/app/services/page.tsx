@@ -5,28 +5,21 @@ import { servicesData } from "@/data/servicesData";
 import ServiceCard from "@/components/ServiceCard";
 import ShutterComparison from "@/components/ShutterComparison";
 import {
-  PanelsTopLeft,
-  Sliders,
-  ChefHat,
-  DoorOpen,
-  Layers,
-  Sparkles,
-  PhoneCall,
-  MessageCircle,
-  ShieldCheck,
   Compass,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServicesPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const { isRTL, t } = useLanguage();
 
   const categories = [
-    { id: "all", label: "All Engineering Services" },
-    { id: "windows", label: "Glazing & Windows" },
-    { id: "kitchens", label: "Modular Kitchen Fit-Outs" },
-    { id: "doors", label: "Doors & Entrances" },
-    { id: "shutters", label: "Shutter Engineering" },
-    { id: "custom", label: "Custom Facades" },
+    { id: "all", label: isRTL ? "كافة الخدمات الهندسية" : "All Engineering Services" },
+    { id: "windows", label: isRTL ? "الزجاج الإنشائي والنوافذ" : "Glazing & Windows" },
+    { id: "kitchens", label: isRTL ? "مطابخ ألمنيوم مقاومة للماء" : "Modular Kitchen Fit-Outs" },
+    { id: "doors", label: isRTL ? "أبواب المداخل الفاخرة" : "Doors & Entrances" },
+    { id: "shutters", label: isRTL ? "هندسة الشترات الآلية" : "Shutter Engineering" },
+    { id: "custom", label: isRTL ? "الواجهات واللوفرات" : "Custom Facades" },
   ];
 
   const filteredServices =
@@ -41,13 +34,27 @@ export default function ServicesPage() {
         <div className="max-w-3xl space-y-4">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-charcoal-900 border border-gold-400/40 text-gold-400 text-xs font-semibold uppercase tracking-wider">
             <Compass className="w-3.5 h-3.5" />
-            Abu Ahmed Gulf Frames - Turnkey Services
+            <span>
+              {isRTL
+                ? "أبو أحمد لإطارات الخليج - خدمات معمارية متكاملة"
+                : "Abu Ahmed Gulf Frames - Turnkey Services"}
+            </span>
           </span>
           <h1 className="text-4xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-            Architectural Engineering <span className="gold-gradient-text">Services</span>
+            {isRTL ? (
+              <>
+                خدمات الهندسة <span className="gold-gradient-text">المعمارية</span> والتنفيذ الميداني
+              </>
+            ) : (
+              <>
+                Architectural Engineering <span className="gold-gradient-text">Services</span>
+              </>
+            )}
           </h1>
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-            We provide bespoke architectural aluminum engineering, fabrication, and precision installation services. We do not sell retail off-the-shelf products. Every project is an end-to-end commissioned service tailored to your architectural drawings and site specifications.
+            {isRTL
+              ? "نقدم خدمات هندسة وتصنيع وتركيب الألمنيوم المعماري الدقيق حسب الطلب. نحن لا نبيع منتجات تجزئة جاهزة. كل مشروع هو خدمة متكاملة مخصصة وفقاً لمخططاتك المعمارية ومواصفات موقعك الدقيقة."
+              : "We provide bespoke architectural aluminum engineering, fabrication, and precision installation services. We do not sell retail off-the-shelf products. Every project is an end-to-end commissioned service tailored to your architectural drawings and site specifications."}
           </p>
         </div>
 
@@ -79,43 +86,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Shutter Mechanisms Section in Catalog */}
+      {/* Deep Dive Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
         <ShutterComparison />
-      </section>
-
-      {/* Bottom Conversion Box */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="charcoal-gradient-card rounded-2xl p-8 border border-charcoal-700/80 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1.5 text-center md:text-left">
-            <h3 className="text-xl font-heading font-bold text-white flex items-center justify-center md:justify-start gap-2">
-              <ShieldCheck className="w-5 h-5 text-gold-400" />
-              <span>Need Architectural Shop Drawings or On-Site Laser Survey?</span>
-            </h3>
-            <p className="text-xs text-slate-400">
-              Master Craftsman Abu Ahmed personally conducts on-site laser surveys, structural anchorage inspections, and hardware calibration across Pakistan.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <a
-              href="https://wa.me/923001234567?text=Hello%20Abu%20Ahmed%20Gulf%20Frames,%20I%20would%20like%20to%20book%20an%20on-site%20laser%20survey%20for%20my%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gold-gradient-bg text-charcoal-950 font-bold px-5 py-2.5 rounded-xl text-xs hover:shadow-lg transition-all flex items-center gap-1.5"
-            >
-              <MessageCircle className="w-4 h-4 fill-charcoal-950" />
-              <span>Book Site Survey on WhatsApp</span>
-            </a>
-            <a
-              href="tel:+923001234567"
-              className="bg-charcoal-800 border border-charcoal-600 hover:border-gold-400 text-white font-medium px-4 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition-colors"
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-gold-400" />
-              <span>Direct Hotline</span>
-            </a>
-          </div>
-        </div>
       </section>
     </div>
   );

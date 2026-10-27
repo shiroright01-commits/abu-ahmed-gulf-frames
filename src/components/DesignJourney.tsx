@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Compass,
@@ -8,9 +10,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function DesignJourney() {
-  const steps = [
+  const { isRTL, t } = useLanguage();
+
+  const stepsEn = [
     {
       step: "01",
       icon: Compass,
@@ -65,19 +70,79 @@ export default function DesignJourney() {
     },
   ];
 
+  const stepsAr = [
+    {
+      step: "٠١",
+      icon: Compass,
+      title: "المعاينة الليزرية ومراجعة المخططات",
+      subtitle: "رفع المقاسات الميدانية واختبار الأحمال الإنشائية",
+      description:
+        "يزور المعلم أبو أحمد موقع مشروعكم لرفع المقاسات بالليزر بدقة المليمتر، وفحص الأعتاب الخرسانية، وحساب مقاومة الرياح ومطابقة المخطط الهندسي.",
+      highlights: [
+        "تحليل استواء الفتحات ليزرياً",
+        "حساب سماكة الزجاج وأحمال العواصف",
+        "استشارة مباشرة مع المعلم المتمرس",
+      ],
+    },
+    {
+      step: "٠٢",
+      icon: FileCode2,
+      title: "الهندسة والمخططات التنفيذية 3D",
+      subtitle: "دمج التصاميم بدقة في الهيكل الإنشائي",
+      description:
+        "لا نقدم مقاسات جاهزة مسبقاً. يقوم فريقنا برسم تفاصيل القطاعات بدقة، ومسارات تصريف مياه الأمطار، واختيار التشطيب المناسب (فحم داكن، ذهب شامبين، بلاتينيوم).",
+      highlights: [
+        "مخططات تفصيلية للموافقة قبل البدء",
+        "سماكات بروفايل مخصصة (٤٥ إلى ٨٠ ملم)",
+        "اعتماد وتوقيع العميل المسبق",
+      ],
+    },
+    {
+      step: "٠٣",
+      icon: Wrench,
+      title: "التصنيع الآلي في ورشة الحرفي",
+      subtitle: "الكبس الهيدروليكي بزوايا ٤٥° والتجميع المحكم",
+      description:
+        "يتم التصنيع في ورشتنا المتخصصة؛ حيث تُقص سبائك 6063-T6 بآلات CNC بدقة متناهية، وتُكبس الزوايا هيدروليكياً بروابط داخلية صلبة وتركيب إكسسوارات أوروبية.",
+      highlights: [
+        "قص مزدوج بدون أي فواصل مرئية",
+        "كبس زوايا هيدروليكي فائق المتانة",
+        "اختبار المحركات والمحاور على المنضدة",
+      ],
+    },
+    {
+      step: "٠٤",
+      icon: ShieldCheck,
+      title: "التركيب الهندسي الميداني والضمان",
+      subtitle: "تثبيت فولاذي معتمد، عزل محكم، وضمان هيكلي",
+      description:
+        "يقوم طاقم التركيب بتثبيت الإطارات ببراغي ستانلس 316 الغاطسة، وتطبيق ربل EPDM المستمر لمنع تسرب المياه والحرارة، وتسليم شهادة الضمان لمدة ١٠ سنوات.",
+      highlights: [
+        "وزن وتسوية العتبات الأرضية بانسيابية",
+        "شهادة إحكام العزل المائي والصوتي",
+        "ضمان هيكلي لمدة ١٠ سنوات معتمدة",
+      ],
+    },
+  ];
+
+  const steps = isRTL ? stepsAr : stepsEn;
+
   return (
     <section className="py-24 bg-charcoal-900/40 border-y border-charcoal-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold flex items-center justify-center gap-1.5">
             <Compass className="w-3.5 h-3.5" />
-            How We Execute Your Custom Design
+            {t("journeyBadge", "How We Execute Your Custom Design")}
           </span>
           <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white">
-            The Bespoke Architectural Journey
+            {t("journeyTitle", "The Bespoke Architectural Journey")}
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm">
-            We don&apos;t sell boxed products. We engineer, customize, and insert bespoke aluminum solutions directly into your architectural structure.
+            {t(
+              "journeySubtitle",
+              "We do not sell boxed retail products. We engineer, customize, and insert bespoke aluminum solutions directly into your architectural structure."
+            )}
           </p>
         </div>
 
@@ -100,39 +165,48 @@ export default function DesignJourney() {
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-base font-heading font-bold text-white mb-1 group-hover:text-gold-300 transition-colors">
-                    {item.title}
-                  </h3>
-                  <span className="text-[11px] text-gold-400 font-medium block mb-3">
-                    {item.subtitle}
-                  </span>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                <div className="space-y-3 flex-1 mb-6">
+                  <div>
+                    <h3 className="text-base font-heading font-bold text-white group-hover:text-gold-300 transition-colors">
+                      {item.title}
+                    </h3>
+                    <div className="text-[11px] text-gold-400 font-medium mt-0.5">
+                      {item.subtitle}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-slate-400 leading-relaxed">
                     {item.description}
                   </p>
 
-                  <ul className="space-y-1.5 border-t border-charcoal-800/80 pt-3 text-[11px] text-slate-300">
-                    {item.highlights.map((h, hIdx) => (
-                      <li key={hIdx} className="flex items-start gap-1.5">
-                        <CheckCircle2 className="w-3 h-3 text-gold-400 shrink-0 mt-0.5" />
-                        <span>{h}</span>
-                      </li>
+                  <div className="space-y-1 pt-2">
+                    {item.highlights.map((hl, hlIdx) => (
+                      <div
+                        key={hlIdx}
+                        className="flex items-center gap-1.5 text-[11px] text-slate-300"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 text-gold-400 shrink-0" />
+                        <span>{hl}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-charcoal-800 flex items-center justify-between text-xs">
+                  <span className="text-slate-400 font-medium">
+                    {isRTL ? "مرحلة " + item.step : "Stage " + item.step}
+                  </span>
+                  <Link
+                    href="/contact"
+                    className="text-gold-400 hover:text-white font-semibold flex items-center gap-1 transition-colors"
+                  >
+                    <span>{isRTL ? "طلب استشارة" : "Consult"}</span>
+                    <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? "rotate-180" : ""}`} />
+                  </Link>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link
-            href="/contact"
-            className="gold-gradient-bg text-charcoal-950 font-bold px-7 py-3.5 rounded-xl text-xs inline-flex items-center gap-2 hover:shadow-lg hover:shadow-gold-500/20 transition-all"
-          >
-            <span>Book Phase 1 On-Site Laser Survey</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </div>
     </section>

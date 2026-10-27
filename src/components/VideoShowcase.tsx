@@ -8,13 +8,13 @@ import {
   Video,
   Clock,
   MapPin,
-  Sparkles,
-  ArrowRight,
   MessageCircle,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function VideoShowcase() {
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+  const { isRTL, t } = useLanguage();
 
   return (
     <section className="py-24 max-w-7xl mx-auto px-4 sm:px-8">
@@ -22,25 +22,33 @@ export default function VideoShowcase() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
         <div className="space-y-2">
           <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold flex items-center gap-1.5">
-            <Video className="w-4 h-4 text-gold-400" />
-            Cinematic On-Site Footage
+            <Video className="w-4 h-4 text-gold-400 shrink-0" />
+            <span>{isRTL ? "توثيق فيديو سينمائي من الموقع" : "Cinematic On-Site Footage"}</span>
           </span>
           <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white">
-            Execution Reels & Video Case Studies
+            {isRTL
+              ? "مقاطع فيديو ودراسات حالة من أرض الواقع"
+              : "Execution Reels & Video Case Studies"}
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm max-w-xl">
-            Watch our master technicians in action. Real on-site drone flyovers, motorized shutter mechanism testing, and luxury kitchen installation walkthroughs.
+            {isRTL
+              ? "شاهد معلمينا أثناء العمل الميداني. تصوير طائرات الدرون للمشاريع الكبرى، واختبار محركات الشترات، وجولات داخل مطابخ الألمنيوم الفاخرة."
+              : "Watch our master technicians in action. Real on-site drone flyovers, motorized shutter mechanism testing, and luxury kitchen installation walkthroughs."}
           </p>
         </div>
 
         <a
-          href="https://wa.me/923001234567?text=Hello%20Abu%20Ahmed%20Gulf%20Frames,%20I%20would%20like%20to%20request%20more%20video%20walkthroughs%20of%20your%20completed%20projects."
+          href={`https://wa.me/923001234567?text=${encodeURIComponent(
+            isRTL
+              ? "مرحباً المعلم أبو أحمد، أود طلب المزيد من مقاطع الفيديو لمشاريعكم المنجزة."
+              : "Hello Abu Ahmed Gulf Frames, I would like to request more video walkthroughs of your completed projects."
+          )}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-charcoal-800 hover:bg-gold-400 text-slate-200 hover:text-charcoal-950 text-xs font-semibold border border-charcoal-700 hover:border-gold-400 transition-all self-start md:self-auto"
         >
-          <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Request Video Catalog on WhatsApp</span>
+          <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+          <span>{isRTL ? "طلب كتالوج الفيديو عبر الواتساب" : "Request Video Catalog on WhatsApp"}</span>
         </a>
       </div>
 
@@ -64,7 +72,7 @@ export default function VideoShowcase() {
               {/* Center Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-12 h-12 rounded-2xl gold-gradient-bg flex items-center justify-center text-charcoal-950 shadow-2xl group-hover:scale-110 transition-transform duration-200">
-                  <Play className="w-5 h-5 fill-current ml-0.5" />
+                  <Play className={`w-5 h-5 fill-current ${isRTL ? "mr-0.5 rotate-180" : "ml-0.5"}`} />
                 </div>
               </div>
 
@@ -93,8 +101,8 @@ export default function VideoShowcase() {
               </div>
 
               <div className="pt-3 border-t border-charcoal-800 flex items-center justify-between text-xs text-gold-400 font-semibold group-hover:translate-x-0.5 transition-transform">
-                <span>Play Reel</span>
-                <Play className="w-3 h-3 fill-current" />
+                <span>{isRTL ? "تشغيل المقطع" : "Play Reel"}</span>
+                <Play className={`w-3 h-3 fill-current ${isRTL ? "rotate-180" : ""}`} />
               </div>
             </div>
           </div>
@@ -143,15 +151,17 @@ export default function VideoShowcase() {
                 {selectedVideo.description}
               </p>
               <a
-                href={`https://wa.me/923001234567?text=Hello%20Abu%20Ahmed%20Gulf%20Frames,%20I%20saw%20your%20video:%20${encodeURIComponent(
-                  selectedVideo.title
-                )}%20and%20would%20like%20to%20consult%20for%20a%20similar%20site%20service.`}
+                href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                  isRTL
+                    ? `مرحباً المعلم أبو أحمد، اطلعت على فيديو: "${selectedVideo.title}" وأود استشارتكم لتنفيذ مشروع مشابه.`
+                    : `Hello Abu Ahmed Gulf Frames, I saw your video: ${selectedVideo.title} and would like to consult for a similar site service.`
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="gold-gradient-bg text-charcoal-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shrink-0 hover:shadow-lg transition-all"
               >
-                <MessageCircle className="w-3.5 h-3.5 fill-charcoal-950" />
-                <span>Consult on Similar Project</span>
+                <MessageCircle className="w-3.5 h-3.5 fill-charcoal-950 shrink-0" />
+                <span>{isRTL ? "طلب استشارة لعمل مماثل" : "Consult on Similar Project"}</span>
               </a>
             </div>
           </div>

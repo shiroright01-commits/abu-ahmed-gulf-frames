@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import {
@@ -7,24 +9,33 @@ import {
   Clock,
   ShieldCheck,
   ChevronRight,
+  ChevronLeft,
   Wrench,
   Sparkles,
   Video,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { isRTL, t } = useLanguage();
+  const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
+
   return (
     <footer className="bg-charcoal-950 border-t border-charcoal-800 text-slate-400 text-xs">
       {/* Brand Identity / 3 Premium Colors Highlight Banner */}
       <div className="bg-charcoal-900/80 border-b border-charcoal-800 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-slate-300">
-            <Sparkles className="w-4 h-4 text-gold-400" />
+            <Sparkles className="w-4 h-4 text-gold-400 shrink-0" />
             <span className="font-heading font-semibold text-sm text-white">
-              Signature Gulf Architectural Palette:
+              {isRTL
+                ? "التشطيبات المعمارية السيادية المعتمدة:"
+                : "Signature Gulf Architectural Palette:"}
             </span>
             <span className="text-xs text-slate-400">
-              Precision anodized and electrostatically powder-coated finishes
+              {isRTL
+                ? "أنودة دقيقة وطلاء بودرة إلكتروستاتيكي عالي التحمل"
+                : "Precision anodized and electrostatically powder-coated finishes"}
             </span>
           </div>
 
@@ -32,19 +43,19 @@ export default function Footer() {
             <div className="flex items-center gap-2 bg-charcoal-800/80 px-3 py-1.5 rounded-xl border border-charcoal-700">
               <div className="w-3.5 h-3.5 rounded-md bg-[#111827] border border-slate-600 shadow-sm" />
               <span className="text-[11px] font-medium text-slate-200">
-                Deep Charcoal (#111827)
+                {isRTL ? "فحم معماري داكن (#111827)" : "Deep Charcoal (#111827)"}
               </span>
             </div>
             <div className="flex items-center gap-2 bg-charcoal-800/80 px-3 py-1.5 rounded-xl border border-gold-400/40">
               <div className="w-3.5 h-3.5 rounded-md bg-[#C5A059] shadow-sm" />
               <span className="text-[11px] font-medium text-gold-400">
-                Champagne Gold (#C5A059)
+                {isRTL ? "ذهب شامبين فاخر (#C5A059)" : "Champagne Gold (#C5A059)"}
               </span>
             </div>
             <div className="flex items-center gap-2 bg-charcoal-800/80 px-3 py-1.5 rounded-xl border border-charcoal-700">
               <div className="w-3.5 h-3.5 rounded-md bg-[#E2E8F0] shadow-sm" />
               <span className="text-[11px] font-medium text-slate-200">
-                Anodized Platinum (#E2E8F0)
+                {isRTL ? "فضي بلاتيني أنودايز (#E2E8F0)" : "Anodized Platinum (#E2E8F0)"}
               </span>
             </div>
           </div>
@@ -69,25 +80,44 @@ export default function Footer() {
               </div>
               <div>
                 <span className="font-heading font-bold text-lg text-white block">
-                  Abu Ahmed <span className="text-gold-400">Gulf Frames</span>
+                  {isRTL ? (
+                    <>
+                      أبو أحمد <span className="text-gold-400">لإطارات الخليج</span>
+                    </>
+                  ) : (
+                    <>
+                      Abu Ahmed <span className="text-gold-400">Gulf Frames</span>
+                    </>
+                  )}
                 </span>
                 <span className="text-[10px] uppercase tracking-wider text-slate-400">
-                  Architectural Glazing & Engineering Studio (20+ Years)
+                  {isRTL
+                    ? "استوديو هندسة وتصنيع الألمنيوم المعماري (٢٠+ عاماً)"
+                    : "Architectural Glazing & Engineering Studio (20+ Years)"}
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              We specialize strictly in bespoke architectural aluminum services, not off-the-shelf retail products. Turnkey on-site laser surveys, precision workshop fabrication, and certified installation of thermal-break windows, luxury aluminum kitchens, heavy-duty doors, and automated shutter mechanisms.
+              {t(
+                "footerDesc",
+                "We specialize strictly in bespoke architectural aluminum services, not off-the-shelf retail products. Turnkey on-site laser surveys, precision workshop fabrication, and certified installation of thermal-break windows, luxury aluminum kitchens, heavy-duty doors, and automated shutter mechanisms."
+              )}
             </p>
 
             <div className="p-3.5 rounded-xl bg-charcoal-900 border border-charcoal-800 space-y-1.5">
               <div className="flex items-center gap-2 text-gold-400 font-semibold text-xs">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Technician Direct Execution Guarantee</span>
+                <ShieldCheck className="w-4 h-4 shrink-0" />
+                <span>
+                  {isRTL
+                    ? "ضمان التنفيذ المباشر من الحرفي"
+                    : "Technician Direct Execution Guarantee"}
+                </span>
               </div>
               <p className="text-[11px] text-slate-400">
-                Direct master technician management with zero intermediary sales markups. 10-year structural warranty on all architectural framing commissions.
+                {isRTL
+                  ? "إشراف هندسي وتنفيذي مباشر من المعلم بدون وسطاء تجاريين. ضمان هيكلي لمدة ١٠ سنوات لكافة أعمال إطارات الألمنيوم المعمارية."
+                  : "Direct master technician management with zero intermediary sales markups. 10-year structural warranty on all architectural framing commissions."}
               </p>
             </div>
           </div>
@@ -95,32 +125,37 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="font-heading font-bold text-white text-sm tracking-wide">
-              Portfolio & Studio
+              {t("footerQuickLinksTitle", "Portfolio & Studio")}
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> Home
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{t("navHome", "Home")}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/projects" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> 30 Real Works
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "٣٠ عملاً موثقاً" : "30 Real Works"}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#videos" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <Video className="w-3 h-3 text-gold-400/60" /> Video Reels
+                  <Video className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "مقاطع الفيديو" : "Video Reels"}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> Engineering Services
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{t("navServices", "Services")}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> Book Site Survey
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{t("navBookSurvey", "Book Site Survey")}</span>
                 </Link>
               </li>
             </ul>
@@ -129,7 +164,7 @@ export default function Footer() {
           {/* Specializations */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-heading font-bold text-white text-sm tracking-wide">
-              Engineering Services
+              {t("footerServicesTitle", "Engineering Services")}
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -137,8 +172,8 @@ export default function Footer() {
                   href="/services"
                   className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
                 >
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
-                  Architectural Glazing Services
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "واجهات ونوافذ الزجاج الإنشائي" : "Architectural Glazing Services"}</span>
                 </Link>
               </li>
               <li>
@@ -146,8 +181,8 @@ export default function Footer() {
                   href="/services"
                   className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
                 >
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
-                  Bespoke Kitchen Fit-Outs
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "مطابخ ألمنيوم مقاومة للماء ١٠٠٪" : "Bespoke Kitchen Fit-Outs"}</span>
                 </Link>
               </li>
               <li>
@@ -155,8 +190,8 @@ export default function Footer() {
                   href="/services"
                   className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
                 >
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
-                  Pivot & Bi-Fold Door Engineering
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "أبواب محورية وسحابة فاخرة" : "Pivot & Bi-Fold Door Engineering"}</span>
                 </Link>
               </li>
               <li>
@@ -164,8 +199,8 @@ export default function Footer() {
                   href="/services"
                   className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
                 >
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
-                  Automated Motorized Shutters
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "شترات كهربائية بمحركات إيطالية" : "Automated Motorized Shutters"}</span>
                 </Link>
               </li>
               <li>
@@ -173,8 +208,8 @@ export default function Footer() {
                   href="/services"
                   className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
                 >
-                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
-                  Curtain Walls & Custom Louvers
+                  <ArrowIcon className="w-3 h-3 text-gold-400/60 shrink-0" />
+                  <span>{isRTL ? "لوفرات وتكسيات ألمنيوم معمارية" : "Curtain Walls & Custom Louvers"}</span>
                 </Link>
               </li>
             </ul>
@@ -183,33 +218,45 @@ export default function Footer() {
           {/* Contact & Workshop */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-heading font-bold text-white text-sm tracking-wide">
-              Workshop & Site Consultations
+              {t("footerContactTitle", "Workshop & Site Consultations")}
             </h4>
             <div className="space-y-2.5 text-xs">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <span>Main Industrial Area, Aluminum Market, Pakistan</span>
+                <span>
+                  {isRTL
+                    ? "المنطقة الصناعية الرئيسية، سوق الألمنيوم، باكستان"
+                    : "Main Industrial Area, Aluminum Market, Pakistan"}
+                </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <PhoneCall className="w-4 h-4 text-gold-400 shrink-0" />
-                <a href="tel:+923001234567" className="hover:text-white transition-colors">
+                <a href="tel:+923001234567" className="hover:text-white transition-colors" dir="ltr">
                   +92 300 1234567
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <a
-                  href="https://wa.me/923001234567?text=Hello%20Abu%20Ahmed%20Gulf%20Frames,%20I%20would%20like%20to%20book%20a%20site%20consultation."
+                  href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                    isRTL
+                      ? "مرحباً المعلم أبو أحمد، أود حجز استشارة ومعاينة موقع."
+                      : "Hello Abu Ahmed Gulf Frames, I would like to book a site consultation."
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:underline font-medium"
                 >
-                  WhatsApp Direct Consultation
+                  {isRTL ? "استشارة مباشرة عبر الواتساب" : "WhatsApp Direct Consultation"}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-slate-400 shrink-0" />
-                <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                <span>
+                  {isRTL
+                    ? "السبت - الخميس: ٩:٠٠ ص - ٨:٠٠ م"
+                    : "Mon - Sat: 9:00 AM - 8:00 PM"}
+                </span>
               </div>
               <div className="pt-2">
                 <a
@@ -217,7 +264,7 @@ export default function Footer() {
                   className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-charcoal-900 border border-charcoal-700 text-gold-400 hover:border-gold-400 transition-colors text-[11px] font-semibold"
                 >
                   <Wrench className="w-3.5 h-3.5" />
-                  <span>Emergency Shutter Repair Service</span>
+                  <span>{isRTL ? "طوارئ صيانة الشترات" : "Emergency Shutter Repair Service"}</span>
                 </a>
               </div>
             </div>
@@ -229,10 +276,12 @@ export default function Footer() {
       <div className="bg-black py-5 border-t border-charcoal-800 text-[11px] text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
-            &copy; 2026 Abu Ahmed Gulf Frames. Master Craftsman Architectural Services. All Rights Reserved.
+            &copy; 2026 {t("footerCopyright", "Abu Ahmed Gulf Frames. Master Craftsman Architectural Services. All Rights Reserved.")}
           </p>
           <p className="text-slate-400">
-            Engineered with Next.js, Tailwind CSS, and Gulf-Standard Architectural Aluminum.
+            {isRTL
+              ? "تم التطوير بتقنيات Next.js وTailwind CSS بأعلى المعايير الخليجية للألمنيوم المعماري."
+              : "Engineered with Next.js, Tailwind CSS, and Gulf-Standard Architectural Aluminum."}
           </p>
         </div>
       </div>

@@ -7,10 +7,11 @@ import {
   CheckCircle2,
   ShieldCheck,
   MessageCircle,
-  Sparkles,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function QuickEstimator() {
+  const { isRTL, t } = useLanguage();
   const [serviceType, setServiceType] = useState("windows");
   const [width, setWidth] = useState<number>(10);
   const [height, setHeight] = useState<number>(8);
@@ -19,8 +20,7 @@ export default function QuickEstimator() {
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // Approximate turnkey service execution rates per sqft for estimation guidance
-  const rateMap: Record<string, { label: string; ratePerSqFt: number }> = {
+  const rateMapEn: Record<string, { label: string; ratePerSqFt: number }> = {
     windows: { label: "Architectural Glazing & Window Installation Service", ratePerSqFt: 1850 },
     kitchen: { label: "Bespoke Modular Aluminum Kitchen Fit-Out Service", ratePerSqFt: 3200 },
     doors: { label: "Heavy-Duty Architectural Door & Entrance Service", ratePerSqFt: 2200 },
@@ -29,19 +29,39 @@ export default function QuickEstimator() {
     custom: { label: "Bespoke Curtain Wall & Shading Facade Service", ratePerSqFt: 2800 },
   };
 
+  const rateMapAr: Record<string, { label: string; ratePerSqFt: number }> = {
+    windows: { label: "خدمة واجهات ونوافذ الزجاج الإنشائي", ratePerSqFt: 1850 },
+    kitchen: { label: "خدمة تفصيل مطابخ الألمنيوم المقاومة للماء ١٠٠٪", ratePerSqFt: 3200 },
+    doors: { label: "خدمة أبواب المداخل الرئيسية الفاخرة", ratePerSqFt: 2200 },
+    "auto-shutter": { label: "خدمة شترات النوافذ الكهربائية الآلية", ratePerSqFt: 2400 },
+    "manual-shutter": { label: "خدمة الشترات اليدوية الميكانيكية", ratePerSqFt: 1450 },
+    custom: { label: "خدمة تكسيات الواجهات واللوفرات المعمارية", ratePerSqFt: 2800 },
+  };
+
+  const rateMap = isRTL ? rateMapAr : rateMapEn;
   const sqFt = Math.max(1, width * height);
   const estimatedCost = sqFt * (rateMap[serviceType]?.ratePerSqFt || 1800);
 
   const finishNames: Record<string, string> = {
-    charcoal: "Deep Architectural Charcoal (#111827)",
-    gold: "Brushed Champagne Gold (#C5A059)",
-    platinum: "Anodized Platinum Silver (#E2E8F0)",
+    charcoal: isRTL ? "فحم معماري داكن (#111827)" : "Deep Architectural Charcoal (#111827)",
+    gold: isRTL ? "ذهب شامبين فاخر (#C5A059)" : "Brushed Champagne Gold (#C5A059)",
+    platinum: isRTL ? "فضي بلاتيني أنودايز (#E2E8F0)" : "Anodized Platinum Silver (#E2E8F0)",
   };
 
   const generateWhatsAppLink = () => {
     const serviceName = rateMap[serviceType]?.label || "Aluminum Architectural Service";
     const selectedFinish = finishNames[finish] || "Standard Finish";
-    const text = `Hello Master Craftsman Abu Ahmed (Abu Ahmed Gulf Frames),
+    const text = isRTL
+      ? `مرحباً المعلم أبو أحمد (أبو أحمد لإطارات الخليج)،
+أود حجز معاينة ميدانية وطلب تقدير تكلفة تقريبي:
+- الخدمة المطلوبة: ${serviceName}
+- المقاسات التقريبية: ${width} قدم × ${height} قدم (المساحة الإجمالية: ${sqFt} قدم مربع)
+- التشطيب واللون: ${selectedFinish}
+- رقم التواصل: ${phone || "لم يحدد"}
+- ملاحظات إضافية: ${notes || "لا يوجد"}
+
+يرجى تأكيد موعد المعاينة الميدانية.`
+      : `Hello Master Craftsman Abu Ahmed (Abu Ahmed Gulf Frames),
 I would like to book an on-site survey and request a service estimate for:
 - Commission: ${serviceName}
 - Scope Dimensions: ${width} ft x ${height} ft (Approx ${sqFt} sq.ft area)
@@ -71,16 +91,16 @@ Please confirm your availability for a technical site survey.`;
           </div>
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-400 block">
-              Site Survey & Service Budget Estimator
+              {isRTL ? "حاسبة تقدير الميزانية والمعاينة" : "Site Survey & Service Budget Estimator"}
             </span>
             <span className="text-[11px] text-slate-400">
-              Abu Ahmed Gulf Frames - Direct Technician Response
+              {isRTL ? "رد واستشارة فنية مباشرة من المعلم" : "Abu Ahmed Gulf Frames - Direct Technician Response"}
             </span>
           </div>
         </div>
         <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-500/20">
           <ShieldCheck className="w-3.5 h-3.5" />
-          Turnkey Service
+          <span>{isRTL ? "تنفيذ معتمد" : "Turnkey Service"}</span>
         </span>
       </div>
 
@@ -88,19 +108,31 @@ Please confirm your availability for a technical site survey.`;
         {/* Service Type Selection */}
         <div>
           <label className="block text-slate-300 font-medium mb-1.5">
-            Select Turnkey Architectural Service
+            {isRTL ? "اختر الخدمة المعمارية" : "Select Turnkey Architectural Service"}
           </label>
           <select
             value={serviceType}
             onChange={(e) => setServiceType(e.target.value)}
             className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold-400 transition-colors"
           >
-            <option value="windows">Architectural Glazing & Window Installation Service</option>
-            <option value="kitchen">Bespoke Modular Aluminum Kitchen Fit-Out Service</option>
-            <option value="doors">Heavy-Duty Architectural Door & Entrance Service</option>
-            <option value="auto-shutter">Automated Motorized Shutter Engineering Service</option>
-            <option value="manual-shutter">Manual Mechanical Shutter Fabrication Service</option>
-            <option value="custom">Bespoke Curtain Wall & Shading Facade Service</option>
+            <option value="windows">
+              {isRTL ? "واجهات ونوافذ الزجاج الإنشائي" : "Architectural Glazing & Window Installation Service"}
+            </option>
+            <option value="kitchen">
+              {isRTL ? "مطابخ ألمنيوم معيارية مقاومة للماء ١٠٠٪" : "Bespoke Modular Aluminum Kitchen Fit-Out Service"}
+            </option>
+            <option value="doors">
+              {isRTL ? "أبواب المداخل الفاخرة عالية المتانة" : "Heavy-Duty Architectural Door & Entrance Service"}
+            </option>
+            <option value="auto-shutter">
+              {isRTL ? "شترات النوافذ الكهربائية بمحرك" : "Automated Motorized Shutter Engineering Service"}
+            </option>
+            <option value="manual-shutter">
+              {isRTL ? "الشترات اليدوية الميكانيكية" : "Manual Mechanical Shutter Fabrication Service"}
+            </option>
+            <option value="custom">
+              {isRTL ? "تكسيات الواجهات واللوفرات المعمارية" : "Bespoke Curtain Wall & Shading Facade Service"}
+            </option>
           </select>
         </div>
 
@@ -108,7 +140,7 @@ Please confirm your availability for a technical site survey.`;
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-slate-300 font-medium mb-1.5">
-              Approx. Width (Feet)
+              {isRTL ? "العرض التقريبي (قدم)" : "Approx. Width (Feet)"}
             </label>
             <input
               type="number"
@@ -121,7 +153,7 @@ Please confirm your availability for a technical site survey.`;
           </div>
           <div>
             <label className="block text-slate-300 font-medium mb-1.5">
-              Approx. Height (Feet)
+              {isRTL ? "الارتفاع التقريبي (قدم)" : "Approx. Height (Feet)"}
             </label>
             <input
               type="number"
@@ -137,7 +169,7 @@ Please confirm your availability for a technical site survey.`;
         {/* Profile Finish Color */}
         <div>
           <label className="block text-slate-300 font-medium mb-1.5">
-            Select Signature Gulf Finish Palette
+            {isRTL ? "اختر التشطيب المعماري" : "Select Signature Gulf Finish Palette"}
           </label>
           <div className="grid grid-cols-3 gap-2">
             <button
@@ -149,8 +181,8 @@ Please confirm your availability for a technical site survey.`;
                   : "border-charcoal-700 bg-charcoal-950 text-slate-400 hover:text-white"
               }`}
             >
-              <div className="w-3.5 h-3.5 rounded-full bg-[#111827] border border-slate-500" />
-              <span className="text-[10px]">Deep Charcoal</span>
+              <div className="w-4 h-4 rounded bg-[#111827] border border-slate-600" />
+              <span className="text-[10px]">{isRTL ? "فحم داكن" : "Charcoal"}</span>
             </button>
             <button
               type="button"
@@ -158,11 +190,11 @@ Please confirm your availability for a technical site survey.`;
               className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-1 ${
                 finish === "gold"
                   ? "border-gold-400 bg-charcoal-800 text-gold-400 font-semibold shadow"
-                  : "border-charcoal-700 bg-charcoal-950 text-slate-400 hover:text-gold-400"
+                  : "border-charcoal-700 bg-charcoal-950 text-slate-400 hover:text-white"
               }`}
             >
-              <div className="w-3.5 h-3.5 rounded-full bg-[#C5A059]" />
-              <span className="text-[10px]">Champagne Gold</span>
+              <div className="w-4 h-4 rounded bg-[#C5A059]" />
+              <span className="text-[10px]">{isRTL ? "ذهب شامبين" : "Champagne"}</span>
             </button>
             <button
               type="button"
@@ -173,65 +205,74 @@ Please confirm your availability for a technical site survey.`;
                   : "border-charcoal-700 bg-charcoal-950 text-slate-400 hover:text-white"
               }`}
             >
-              <div className="w-3.5 h-3.5 rounded-full bg-[#E2E8F0]" />
-              <span className="text-[10px]">Platinum Silver</span>
+              <div className="w-4 h-4 rounded bg-[#E2E8F0]" />
+              <span className="text-[10px]">{isRTL ? "بلاتينيوم" : "Platinum"}</span>
             </button>
           </div>
         </div>
 
-        {/* Contact Input */}
+        {/* Estimated Preliminary Cost Banner */}
+        <div className="p-3.5 rounded-xl bg-charcoal-950 border border-charcoal-800 flex items-center justify-between">
+          <div>
+            <div className="text-[10px] text-slate-400 uppercase tracking-wider">
+              {isRTL ? "المساحة المحسوبة" : "Estimated Total Area"}
+            </div>
+            <div className="text-sm font-bold text-white font-mono">
+              {sqFt} {isRTL ? "قدم مربع" : "Sq.Ft"}
+            </div>
+          </div>
+          <div className={isRTL ? "text-left" : "text-right"}>
+            <div className="text-[10px] text-gold-400 uppercase tracking-wider font-semibold">
+              {isRTL ? "التقدير الأولي للتكلفة" : "Approx. Budget Guide"}
+            </div>
+            <div className="text-base font-extrabold text-gold-400 font-mono">
+              PKR {estimatedCost.toLocaleString()}*
+            </div>
+          </div>
+        </div>
+
         <div>
           <label className="block text-slate-300 font-medium mb-1.5">
-            Your WhatsApp / Mobile Number
+            {isRTL ? "رقم الواتساب للتواصل (اختياري)" : "WhatsApp Number (Optional)"}
           </label>
           <input
             type="tel"
-            placeholder="e.g. 0300 1234567"
+            placeholder={isRTL ? "0300 1234567" : "e.g. 0300 1234567"}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 transition-colors"
           />
         </div>
 
-        {/* Calculation Preview Badge */}
-        <div className="bg-charcoal-950 p-3 rounded-xl border border-charcoal-800 flex items-center justify-between">
-          <div>
-            <span className="text-[10px] uppercase tracking-wider text-slate-400 block">
-              Estimated Service Area
-            </span>
-            <span className="text-sm font-heading font-bold text-white">
-              {sqFt} Sq.Ft
-            </span>
-          </div>
-          <div className="text-right">
-            <span className="text-[10px] uppercase tracking-wider text-slate-400 block">
-              Turnkey Service Estimate
-            </span>
-            <span className="text-sm font-heading font-bold text-gold-400">
-              PKR {estimatedCost.toLocaleString()}*
-            </span>
-          </div>
+        <div>
+          <label className="block text-slate-300 font-medium mb-1.5">
+            {isRTL ? "ملاحظات إضافية عن المشروع" : "Project Location or Additional Details"}
+          </label>
+          <input
+            type="text"
+            placeholder={isRTL ? "مثال: موقع في لاهور، بحاجة لمعاينة ميدانية" : "e.g. Lahore site, need laser measurement"}
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 transition-colors"
+          />
         </div>
 
-        {/* Submit & WhatsApp Link */}
         <button
           type="submit"
-          className="w-full gold-gradient-bg text-charcoal-950 font-bold py-3.5 rounded-xl hover:shadow-lg hover:shadow-gold-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 text-xs"
+          className="w-full gold-gradient-bg text-charcoal-950 font-bold py-3 rounded-xl hover:shadow-lg hover:shadow-gold-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 text-xs"
         >
           <MessageCircle className="w-4 h-4 fill-charcoal-950" />
-          <span>Book Site Survey & Send Specs to WhatsApp</span>
-          <Send className="w-3.5 h-3.5" />
+          <span>{isRTL ? "طلب استشارة وحجز معاينة عبر الواتساب" : "Confirm On-Site Survey on WhatsApp"}</span>
+          <Send className={`w-3.5 h-3.5 ${isRTL ? "rotate-180" : ""}`} />
         </button>
 
-        <p className="text-[10px] text-center text-slate-400 leading-normal">
-          *Turnkey estimate covers site survey, precision fabrication, hardware calibration, and professional installation. Final quote finalized after on-site laser assessment.
-        </p>
-
         {submitted && (
-          <div className="p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-[11px] flex items-center gap-2">
+          <div className="p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>
-              Opening WhatsApp chat with Master Craftsman Abu Ahmed with your service requirements!
+              {isRTL
+                ? "تم فتح محادثة الواتساب لطلب المعاينة!"
+                : "Survey request initiated on WhatsApp!"}
             </span>
           </div>
         )}

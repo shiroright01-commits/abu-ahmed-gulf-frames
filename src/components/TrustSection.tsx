@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   ShieldCheck,
@@ -7,9 +9,12 @@ import {
   Clock,
   Sparkles,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TrustSection() {
-  const trustPillars = [
+  const { isRTL } = useLanguage();
+
+  const trustPillarsEn = [
     {
       icon: Award,
       title: "20+ Years Master Craftsmanship",
@@ -42,18 +47,57 @@ export default function TrustSection() {
     },
   ];
 
+  const trustPillarsAr = [
+    {
+      icon: Award,
+      title: "خبرة تفوق ٢٠ عاماً كمعلم متمرس",
+      desc: "عقدان من العمل الميداني المتواصل في سحب الألمنيوم، كبس الزوايا الهيدروليكية، وهندسة الآليات الدقيقة.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "ضمان هيكلي لمدة ١٠ سنوات",
+      desc: "كل تركيب معماري مدعوم بضمان مباشر ضد الاعوجاج، الصدأ، وتفكك الزوايا بفعل العوامل الجوية.",
+    },
+    {
+      icon: Wrench,
+      title: "تصنيع مباشر في ورشتنا المتخصصة",
+      desc: "بدون أي وسطاء أو هوامش ربح تجارية. أنت تتعامل مباشرة مع المعلم أبو أحمد من رفع المقاسات وحتى التسليم النهائي.",
+    },
+    {
+      icon: Layers,
+      title: "سبائك 6063-T6 معمارية فائقة المتانة",
+      desc: "سحب ألمنيوم معتمد يوفر أعلى درجات الصلابة، ومقاومة الرياح، وامتصاص فائق لطبقة الأنودة والحماية.",
+    },
+    {
+      icon: Sparkles,
+      title: "إكسسوارات ومحركات أوروبية معتمدة",
+      desc: "مجهزة بمفصلات هيدروليكية ألمانية ناعمة الإغلاق، ومحركات شتر إيطالية قوية، ومحاور ستانلس 304 صلبة.",
+    },
+    {
+      icon: Clock,
+      title: "خدمة طوارئ لصيانة الشترات",
+      desc: "استجابة سريعة في الموقع للشترات العالقة، استبدال النوابض المكسورة، وتغيير المحركات التالفة.",
+    },
+  ];
+
+  const trustPillars = isRTL ? trustPillarsAr : trustPillarsEn;
+
   return (
     <section className="py-20 bg-charcoal-900/60 border-y border-charcoal-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
           <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold">
-            Uncompromising Standards
+            {isRTL ? "معايير هندسية صارمة" : "Uncompromising Standards"}
           </span>
           <h2 className="text-2xl sm:text-4xl font-heading font-bold text-white">
-            Why Architects & Villa Owners Trust Abu Ahmed Gulf Frames
+            {isRTL
+              ? "لماذا يثق المعماريون وأصحاب الفلل في أبو أحمد لإطارات الخليج؟"
+              : "Why Architects & Villa Owners Trust Abu Ahmed Gulf Frames"}
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm">
-            Proven precision engineering, structural durability, and lifetime utility in every single profile cut.
+            {isRTL
+              ? "دقة هندسية موثقة، ومتانة تدوم طويلاً، وجودة تنفيذ في كل زاوية وقطاع مقصوص."
+              : "Proven precision engineering, structural durability, and lifetime utility in every single profile cut."}
           </p>
         </div>
 

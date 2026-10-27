@@ -8,10 +8,9 @@ import {
   ChevronRight,
   MapPin,
   MessageCircle,
-  CheckCircle2,
   ShieldCheck,
-  Maximize2,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ImageLightboxModalProps {
   isOpen: boolean;
@@ -29,6 +28,7 @@ export default function ImageLightboxModal({
   onNavigate,
 }: ImageLightboxModalProps) {
   const currentProject = projects[currentIndex];
+  const { isRTL, t } = useLanguage();
 
   const handlePrev = useCallback(() => {
     if (projects.length === 0) return;
@@ -50,26 +50,43 @@ export default function ImageLightboxModal({
       if (e.key === "Escape") {
         onClose();
       } else if (e.key === "ArrowLeft") {
-        handlePrev();
+        if (isRTL) {
+          handleNext();
+        } else {
+          handlePrev();
+        }
       } else if (e.key === "ArrowRight") {
-        handleNext();
+        if (isRTL) {
+          handlePrev();
+        } else {
+          handleNext();
+        }
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    // Prevent body scroll when modal is open
     document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, handlePrev, handleNext, onClose]);
+  }, [isOpen, handlePrev, handleNext, onClose, isRTL]);
 
   if (!isOpen || !currentProject) return null;
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Abu Ahmed Gulf Frames, I am viewing your portfolio item #${currentIndex + 1}: "${currentProject.title}" (${currentProject.clientLocation}). I would like to consult for a similar bespoke installation.`
+    isRTL
+      ? `مرحباً المعلم أبو أحمد (أبو أحمد لإطارات الخليج)، أنا أتصفح العمل الموثق رقم ${
+          currentIndex + 1
+        }: "${currentProject.title}" (${
+          currentProject.clientLocation
+        }). أود الاستفسار وطلب معاينة لتنفيذ عمل مماثل.`
+      : `Hello Abu Ahmed Gulf Frames, I am viewing your portfolio item #${
+          currentIndex + 1
+        }: "${currentProject.title}" (${
+          currentProject.clientLocation
+        }). I would like to consult for a similar bespoke installation.`
   );
 
   return (
@@ -97,7 +114,7 @@ export default function ImageLightboxModal({
 
         <div className="flex items-center gap-2">
           <span className="text-[11px] text-slate-400 hidden sm:inline">
-            Press <kbd className="px-1.5 py-0.5 rounded bg-charcoal-800 border border-charcoal-700 text-slate-300 text-[10px]">←</kbd> <kbd className="px-1.5 py-0.5 rounded bg-charcoal-800 border border-charcoal-700 text-slate-300 text-[10px]">→</kbd> to browse
+            {t("lightboxKeyboardHint", "Press ← → to browse")}
           </span>
           <button
             type="button"
@@ -106,7 +123,7 @@ export default function ImageLightboxModal({
             aria-label="Close Fullscreen View"
           >
             <X className="w-5 h-5 sm:w-4 sm:h-4" />
-            <span className="hidden sm:inline">Close</span>
+            <span className="hidden sm:inline">{t("lightboxClose", "Close")}</span>
           </button>
         </div>
       </div>
@@ -137,8 +154,8 @@ export default function ImageLightboxModal({
 
           {/* Genuine Verified Watermark Pill */}
           <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/85 border border-gold-400/40 text-gold-400 text-[11px] sm:text-xs font-bold backdrop-blur-md shadow-xl pointer-events-none">
-            <ShieldCheck className="w-3.5 h-3.5 text-gold-400" />
-            <span>Master Abu Ahmed Genuine Work</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-gold-400 shrink-0" />
+            <span>{t("lightboxVerifiedPill", "Master Abu Ahmed Genuine Work")}</span>
           </div>
         </div>
 
@@ -184,8 +201,10 @@ export default function ImageLightboxModal({
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-charcoal-950 font-bold px-5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              <MessageCircle className="w-4 h-4 fill-charcoal-950" />
-              <span>Inquire This Exact Work on WhatsApp</span>
+              <MessageCircle className="w-4 h-4 fill-charcoal-950 shrink-0" />
+              <span>
+                {t("lightboxInquireWhatsApp", "Inquire This Exact Work on WhatsApp")}
+              </span>
             </a>
           </div>
         </div>

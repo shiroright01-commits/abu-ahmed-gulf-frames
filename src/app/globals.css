@@ -64,3 +64,15 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
+
+/* RTL & Arabic Typography Enhancements */
+[dir="rtl"] {
+  font-family: system-ui, -apple-system, "Segoe UI", Tahoma, "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  letter-spacing: normal;
+}
+
+[dir="rtl"] .font-heading {
+  font-family: system-ui, -apple-system, "Segoe UI", Tahoma, "Noto Sans Arabic", sans-serif;
+  font-weight: 700;
+}
+

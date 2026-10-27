@@ -11,18 +11,21 @@ import {
   X,
   ArrowRight,
   Compass,
+  Globe,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { language, setLanguage, isRTL, t } = useLanguage();
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Portfolio", href: "/projects" },
-    { label: "Services", href: "/services" },
-    { label: "Bespoke Process", href: "/#process" },
-    { label: "Book Site Survey", href: "/contact" },
+    { label: t("navHome"), href: "/" },
+    { label: t("navPortfolio"), href: "/projects" },
+    { label: t("navServices"), href: "/services" },
+    { label: isRTL ? "رحلة التنفيذ" : "Bespoke Process", href: "/#process" },
+    { label: t("navBookSurvey"), href: "/contact" },
   ];
 
   return (
@@ -32,30 +35,66 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
           <div className="flex items-center gap-6">
             <span className="inline-flex items-center gap-1.5 text-gold-400 font-medium">
-              <ShieldCheck className="w-4 h-4 text-gold-400" />
-              20+ Years Master Aluminum Craftsman
+              <ShieldCheck className="w-4 h-4 text-gold-400 shrink-0" />
+              <span>
+                {isRTL
+                  ? "خبرة أكثر من ٢٠ عاماً كمعلم ألمنيوم معتمد"
+                  : "20+ Years Master Aluminum Craftsman"}
+              </span>
             </span>
             <span className="hidden md:inline-flex items-center gap-1.5 text-slate-400">
-              <Compass className="w-3.5 h-3.5 text-gold-400/80" />
-              Bespoke Architectural Aluminum Services & Portfolio Studio
+              <Compass className="w-3.5 h-3.5 text-gold-400/80 shrink-0" />
+              <span>
+                {isRTL
+                  ? "استوديو خدمات وهندسة الألمنيوم المعماري المعتمد"
+                  : "Bespoke Architectural Aluminum Services & Portfolio Studio"}
+              </span>
             </span>
           </div>
           <div className="flex items-center gap-4 sm:gap-6">
+            {/* Quick Language Toggle in Topbar */}
+            <div className="flex items-center gap-1 text-[11px] font-semibold bg-charcoal-800/80 px-2 py-0.5 rounded-lg border border-charcoal-700">
+              <Globe className="w-3 h-3 text-gold-400" />
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`px-1.5 py-0.5 rounded transition-colors ${
+                  language === "en" ? "text-gold-400 font-bold" : "text-slate-400 hover:text-white"
+                }`}
+              >
+                EN
+              </button>
+              <span className="text-charcoal-600">|</span>
+              <button
+                type="button"
+                onClick={() => setLanguage("ar")}
+                className={`px-1.5 py-0.5 rounded transition-colors ${
+                  language === "ar" ? "text-gold-400 font-bold" : "text-slate-400 hover:text-white"
+                }`}
+              >
+                العربية
+              </button>
+            </div>
+
             <a
               href="tel:+923001234567"
-              className="hover:text-gold-400 transition-colors flex items-center gap-1.5 text-slate-300 font-medium"
+              className="hover:text-gold-400 transition-colors hidden sm:flex items-center gap-1.5 text-slate-300 font-medium"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-gold-400" />
-              <span>Direct Hotline: +92 300 1234567</span>
+              <PhoneCall className="w-3.5 h-3.5 text-gold-400 shrink-0" />
+              <span dir="ltr">+92 300 1234567</span>
             </a>
             <a
-              href="https://wa.me/923001234567?text=Hello%20Abu%20Ahmed%20Gulf%20Frames,%20I%20would%20like%20to%20book%20a%20site%20consultation."
+              href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                isRTL
+                  ? "مرحباً، أود حجز معاينة موقع واستشارة فنية مع المعلم أبو أحمد."
+                  : "Hello Abu Ahmed Gulf Frames, I would like to book a site consultation."
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-lg hover:bg-emerald-600/30 transition-colors flex items-center gap-1 font-medium"
             >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>WhatsApp Master Craftsman</span>
+              <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+              <span>{t("navConsultWhatsApp")}</span>
             </a>
           </div>
         </div>
@@ -78,10 +117,20 @@ export default function Navbar() {
             </div>
             <div>
               <span className="font-heading font-bold text-lg sm:text-xl tracking-tight text-white block group-hover:text-gold-300 transition-colors">
-                Abu Ahmed <span className="text-gold-400">Gulf Frames</span>
+                {isRTL ? (
+                  <>
+                    أبو أحمد <span className="text-gold-400">لإطارات الخليج</span>
+                  </>
+                ) : (
+                  <>
+                    Abu Ahmed <span className="text-gold-400">Gulf Frames</span>
+                  </>
+                )}
               </span>
               <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-slate-400 block font-medium">
-                Architectural Aluminum & Glazing Studio
+                {isRTL
+                  ? "استوديو الألمنيوم والواجهات المعمارية المعتمدة"
+                  : "Architectural Aluminum & Glazing Studio"}
               </span>
             </div>
           </Link>
@@ -107,31 +156,99 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Action CTA */}
+          {/* Right Action CTA & Desktop Switcher */}
           <div className="hidden sm:flex items-center gap-3">
+            {/* Prominent Switcher */}
+            <div className="flex items-center bg-charcoal-800/90 border border-charcoal-700 rounded-xl p-1 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`px-2.5 py-1 rounded-lg transition-all ${
+                  language === "en"
+                    ? "bg-gold-500 text-charcoal-950 shadow-sm font-bold"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("ar")}
+                className={`px-2.5 py-1 rounded-lg transition-all ${
+                  language === "ar"
+                    ? "bg-gold-500 text-charcoal-950 shadow-sm font-bold"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                العربية
+              </button>
+            </div>
+
             <Link
               href="/contact"
               className="gold-gradient-bg text-charcoal-950 font-bold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-gold-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 text-sm"
             >
-              <span>Book Site Survey</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>{t("navBookSurvey")}</span>
+              <ArrowRight className={`w-4 h-4 transition-transform ${isRTL ? "rotate-180" : ""}`} />
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-charcoal-800 border border-charcoal-700 text-slate-300 hover:text-white hover:border-gold-400/50 transition-colors"
-            aria-label="Toggle navigation menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu & Switcher Toggle Button */}
+          <div className="flex lg:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setLanguage(language === "en" ? "ar" : "en")}
+              className="px-2.5 py-1.5 rounded-xl bg-charcoal-800 border border-charcoal-700 text-gold-400 text-xs font-bold"
+              aria-label="Toggle language"
+            >
+              {language === "en" ? "العربية" : "EN"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl bg-charcoal-800 border border-charcoal-700 text-slate-300 hover:text-white hover:border-gold-400/50 transition-colors"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#0B0F14] border-b border-charcoal-700 px-4 py-6 space-y-4 shadow-2xl">
+            {/* Language Switcher in Mobile Drawer */}
+            <div className="flex items-center justify-between bg-charcoal-900 border border-charcoal-800 p-2 rounded-xl">
+              <span className="text-xs text-slate-400 flex items-center gap-1.5">
+                <Globe className="w-3.5 h-3.5 text-gold-400" />
+                {isRTL ? "اختر لغة الموقع" : "Select Language"}
+              </span>
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => setLanguage("en")}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold ${
+                    language === "en"
+                      ? "bg-gold-500 text-charcoal-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("ar")}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold ${
+                    language === "ar"
+                      ? "bg-gold-500 text-charcoal-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  العربية
+                </button>
+              </div>
+            </div>
+
             <nav className="flex flex-col space-y-2">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -158,15 +275,17 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="gold-gradient-bg text-charcoal-950 font-bold px-4 py-3 rounded-xl text-center text-sm flex items-center justify-center gap-2"
               >
-                <span>Book Site Survey & Estimate</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>{t("navBookSurvey")}</span>
+                <ArrowRight
+                  className={`w-4 h-4 transition-transform ${isRTL ? "rotate-180" : ""}`}
+                />
               </Link>
               <a
                 href="tel:+923001234567"
                 className="bg-charcoal-800 border border-charcoal-700 text-white font-medium px-4 py-2.5 rounded-xl text-center text-xs flex items-center justify-center gap-2"
               >
-                <PhoneCall className="w-4 h-4 text-gold-400" />
-                <span>Call Hotline: +92 300 1234567</span>
+                <PhoneCall className="w-4 h-4 text-gold-400 shrink-0" />
+                <span dir="ltr">+92 300 1234567</span>
               </a>
             </div>
           </div>
