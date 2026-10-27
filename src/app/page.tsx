@@ -3,16 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import { servicesData } from "@/data/servicesData";
-import { projectsData } from "@/data/projectsData";
 import ServiceCard from "@/components/ServiceCard";
-import ProjectCard from "@/components/ProjectCard";
 import ShutterComparison from "@/components/ShutterComparison";
 import TrustSection from "@/components/TrustSection";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import DesignJourney from "@/components/DesignJourney";
 import VideoShowcase from "@/components/VideoShowcase";
-import RealWorkGallery from "@/components/RealWorkGallery";
 import HeroShowcaseCard from "@/components/HeroShowcaseCard";
 import {
   Award,
@@ -389,49 +386,6 @@ export default function HomePage() {
 
       {/* Technical Specifications */}
       <TechnicalSpecs />
-
-      {/* Real On-Site Master Craftsmanship Gallery */}
-      <RealWorkGallery />
-
-      {/* Featured Projects Portfolio Section */}
-      <section className="py-24 bg-charcoal-950/80 border-t border-charcoal-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="space-y-2">
-              <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold flex items-center gap-1.5">
-                <Briefcase className="w-3.5 h-3.5" />
-                {isRTL ? "دراسات حالة من مشاريعنا" : "Featured Portfolio Case Studies"}
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white">
-                {isRTL ? "مشاريع معمارية منفذة بنجاح" : "Completed Architectural Commissions"}
-              </h2>
-              <p className="text-slate-400 text-xs sm:text-sm">
-                {isRTL
-                  ? "استكشف معرض أعمالنا في الفلل السكنية الفاخرة وشترات البنوك والمطابخ المخصصة."
-                  : "Explore our portfolio across luxury residential villas, commercial bank shutters, and bespoke kitchens."}
-              </p>
-            </div>
-
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-charcoal-800 hover:bg-gold-400 text-slate-200 hover:text-charcoal-950 text-xs font-semibold border border-charcoal-700 hover:border-gold-400 transition-all self-start md:self-auto"
-            >
-              <span>{isRTL ? "استعراض كافة الأعمال الموثقة" : "Explore All Portfolio Works"}</span>
-              <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? "rotate-180" : ""}`} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectsData.slice(0, 3).map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                allProjects={projectsData}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Trust & Engineering Pillars */}
       <TrustSection />
