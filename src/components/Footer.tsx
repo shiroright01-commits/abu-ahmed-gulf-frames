@@ -1,0 +1,241 @@
+import React from "react";
+import Link from "next/link";
+import {
+  PhoneCall,
+  MessageCircle,
+  MapPin,
+  Clock,
+  ShieldCheck,
+  ChevronRight,
+  Wrench,
+  Sparkles,
+  Video,
+} from "lucide-react";
+
+export default function Footer() {
+  return (
+    <footer className="bg-charcoal-950 border-t border-charcoal-800 text-slate-400 text-xs">
+      {/* Brand Identity / 3 Premium Colors Highlight Banner */}
+      <div className="bg-charcoal-900/80 border-b border-charcoal-800 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-slate-300">
+            <Sparkles className="w-4 h-4 text-gold-400" />
+            <span className="font-heading font-semibold text-sm text-white">
+              Signature Gulf Architectural Palette:
+            </span>
+            <span className="text-xs text-slate-400">
+              Precision anodized and electrostatically powder-coated finishes
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2 bg-charcoal-800/80 px-3 py-1.5 rounded-xl border border-charcoal-700">
+              <div className="w-3.5 h-3.5 rounded-md bg-[#111827] border border-slate-600 shadow-sm" />
+              <span className="text-[11px] font-medium text-slate-200">
+                Deep Charcoal (#111827)
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-charcoal-800/80 px-3 py-1.5 rounded-xl border border-gold-400/40">
+              <div className="w-3.5 h-3.5 rounded-md bg-[#C5A059] shadow-sm" />
+              <span className="text-[11px] font-medium text-gold-400">
+                Champagne Gold (#C5A059)
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-charcoal-800/80 px-3 py-1.5 rounded-xl border border-charcoal-700">
+              <div className="w-3.5 h-3.5 rounded-md bg-[#E2E8F0] shadow-sm" />
+              <span className="text-[11px] font-medium text-slate-200">
+                Anodized Platinum (#E2E8F0)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Links & Info */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+          {/* Brand Col */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="flex items-center gap-3.5">
+              <div className="relative h-14 w-16 flex items-center justify-center rounded-xl overflow-hidden p-0.5">
+                <img
+                  src="/logo.png"
+                  alt="Abu Ahmed Gulf Frames Official Logo"
+                  width={64}
+                  height={56}
+                  style={{ maxWidth: "64px", maxHeight: "56px", objectFit: "contain" }}
+                  className="h-full w-full object-contain filter drop-shadow-[0_0_10px_rgba(197,160,89,0.3)]"
+                />
+              </div>
+              <div>
+                <span className="font-heading font-bold text-lg text-white block">
+                  Abu Ahmed <span className="text-gold-400">Gulf Frames</span>
+                </span>
+                <span className="text-[10px] uppercase tracking-wider text-slate-400">
+                  Architectural Glazing & Engineering Studio (20+ Years)
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              We specialize strictly in bespoke architectural aluminum services, not off-the-shelf retail products. Turnkey on-site laser surveys, precision workshop fabrication, and certified installation of thermal-break windows, luxury aluminum kitchens, heavy-duty doors, and automated shutter mechanisms.
+            </p>
+
+            <div className="p-3.5 rounded-xl bg-charcoal-900 border border-charcoal-800 space-y-1.5">
+              <div className="flex items-center gap-2 text-gold-400 font-semibold text-xs">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Technician Direct Execution Guarantee</span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Direct master technician management with zero intermediary sales markups. 10-year structural warranty on all architectural framing commissions.
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wide">
+              Portfolio & Studio
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link href="/" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> 30 Real Works
+                </Link>
+              </li>
+              <li>
+                <Link href="/#videos" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <Video className="w-3 h-3 text-gold-400/60" /> Video Reels
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> Engineering Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" /> Book Site Survey
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Specializations */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wide">
+              Engineering Services
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link
+                  href="/services"
+                  className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
+                >
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
+                  Architectural Glazing Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
+                >
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
+                  Bespoke Kitchen Fit-Outs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
+                >
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
+                  Pivot & Bi-Fold Door Engineering
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
+                >
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
+                  Automated Motorized Shutters
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="hover:text-gold-400 transition-colors flex items-center gap-1.5"
+                >
+                  <ChevronRight className="w-3 h-3 text-gold-400/60" />
+                  Curtain Walls & Custom Louvers
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact & Workshop */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wide">
+              Workshop & Site Consultations
+            </h4>
+            <div className="space-y-2.5 text-xs">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
+                <span>Main Industrial Area, Aluminum Market, Pakistan</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <PhoneCall className="w-4 h-4 text-gold-400 shrink-0" />
+                <a href="tel:+923001234567" className="hover:text-white transition-colors">
+                  +92 300 1234567
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a
+                  href="https://wa.me/923001234567?text=Hello%20Abu%20Ahmed%20Gulf%20Frames,%20I%20would%20like%20to%20book%20a%20site%20consultation."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:underline font-medium"
+                >
+                  WhatsApp Direct Consultation
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Clock className="w-4 h-4 text-slate-400 shrink-0" />
+                <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+              </div>
+              <div className="pt-2">
+                <a
+                  href="tel:+923001234567"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-charcoal-900 border border-charcoal-700 text-gold-400 hover:border-gold-400 transition-colors text-[11px] font-semibold"
+                >
+                  <Wrench className="w-3.5 h-3.5" />
+                  <span>Emergency Shutter Repair Service</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright Bar */}
+      <div className="bg-black py-5 border-t border-charcoal-800 text-[11px] text-slate-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p>
+            &copy; 2026 Abu Ahmed Gulf Frames. Master Craftsman Architectural Services. All Rights Reserved.
+          </p>
+          <p className="text-slate-400">
+            Engineered with Next.js, Tailwind CSS, and Gulf-Standard Architectural Aluminum.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

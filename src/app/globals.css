@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-charcoal-dark: #0b0f14;
+  --color-charcoal-surface: #111827;
+  --color-charcoal-card: #1a222d;
+  --color-charcoal-border: #242f3d;
+  --color-gold: #c5a059;
+  --color-gold-hover: #d4af37;
+  --color-gold-muted: #e5cd99;
+  --color-platinum: #e2e8f0;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0B0F14] text-slate-100 antialiased selection:bg-[#C5A059] selection:text-black;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
+
+/* Metallic Champagne Gold Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #ffffff 15%, #e5cd99 45%, #c5a059 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #c5a059 0%, #b88e3e 50%, #9a7129 100%);
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 0 25px -5px rgba(197, 160, 89, 0.15);
+}
+
+.gold-border-subtle {
+  border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.charcoal-gradient-card {
+  background: linear-gradient(180deg, rgba(26, 34, 45, 0.85) 0%, rgba(17, 24, 39, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
