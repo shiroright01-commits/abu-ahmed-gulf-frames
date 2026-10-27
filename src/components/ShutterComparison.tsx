@@ -329,14 +329,14 @@ export default function ShutterComparison() {
         </div>
         <div className="flex items-center gap-3">
           <a
-            href="tel:+923001234567"
+            href="tel:+96594462328"
             className="px-4 py-2 rounded-xl bg-charcoal-800 hover:bg-charcoal-700 text-white border border-charcoal-600 transition-colors text-xs font-semibold flex items-center gap-1.5"
           >
             <PhoneCall className="w-3.5 h-3.5 text-gold-400 shrink-0" />
             <span>{isRTL ? "طوارئ صيانة الشترات" : "Emergency Repair Hotline"}</span>
           </a>
           <a
-            href={`https://wa.me/923001234567?text=${encodeURIComponent(
+            href={`https://wa.me/96594462328?text=${encodeURIComponent(
               isRTL
                 ? "مرحباً المعلم أبو أحمد، أود طلب معاينة واستشارة بخصوص تركيب أو صيانة شترات النوافذ."
                 : "Hello Master Craftsman Abu Ahmed (Abu Ahmed Gulf Frames), I need a site consultation for rolling shutter engineering."

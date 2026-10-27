@@ -68,7 +68,7 @@ export default function ServiceDetailPage({ params }: PageProps) {
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
-                href={`https://wa.me/923001234567?text=Hello%20Master%20Craftsman%20Abu%20Ahmed%20(Abu%20Ahmed%20Gulf%20Frames),%20I%20would%20like%20to%20book%20a%20site%20survey%20for%20${encodeURIComponent(
+                href={`https://wa.me/96594462328?text=Hello%20Master%20Craftsman%20Abu%20Ahmed%20(Abu%20Ahmed%20Gulf%20Frames),%20I%20would%20like%20to%20book%20a%20site%20survey%20for%20${encodeURIComponent(
                   service.title
                 )}`}
                 target="_blank"
@@ -80,7 +80,7 @@ export default function ServiceDetailPage({ params }: PageProps) {
               </a>
 
               <a
-                href="tel:+923001234567"
+                href="tel:+96594462328"
                 className="bg-charcoal-800 hover:bg-charcoal-700 text-white font-medium px-5 py-3.5 rounded-xl border border-charcoal-600 transition-colors flex items-center gap-2 text-xs"
               >
                 <PhoneCall className="w-4 h-4 text-gold-400" />

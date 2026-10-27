@@ -95,7 +95,7 @@ export default function HomePage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
-                  href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                  href={`https://wa.me/96594462328?text=${encodeURIComponent(
                     isRTL
                       ? "مرحباً المعلم أبو أحمد، أود حجز معاينة موقع واستشارة فنية لمشروعي."
                       : "Hello Abu Ahmed Gulf Frames, I would like to book a site consultation for my project."
@@ -458,7 +458,7 @@ export default function HomePage() {
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <a
-                href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                href={`https://wa.me/96594462328?text=${encodeURIComponent(
                   isRTL
                     ? "مرحباً المعلم أبو أحمد، أود حجز معاينة موقع واستشارة فنية لمشروعي."
                     : "Hello Abu Ahmed Gulf Frames, I would like to schedule a site measurement and consultation."
@@ -472,11 +472,11 @@ export default function HomePage() {
               </a>
 
               <a
-                href="tel:+923001234567"
+                href="tel:+96594462328"
                 className="bg-charcoal-800 hover:bg-charcoal-700 border border-charcoal-600 text-white font-semibold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 text-sm"
               >
                 <PhoneCall className="w-4 h-4 text-gold-400 shrink-0" />
-                <span dir="ltr">{t("ctaCallBtn", "Call Master Technician")} : +92 300 1234567</span>
+                <span dir="ltr">{t("ctaCallBtn", "Call Master Technician")} : +965 9446 2328</span>
               </a>
             </div>
           </div>

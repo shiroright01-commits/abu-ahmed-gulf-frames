@@ -11,9 +11,25 @@ import {
   Wrench,
   CheckCircle2,
   Compass,
+  Youtube,
+  Facebook,
+  Instagram,
+  ArrowRight,
 } from "lucide-react";
 import QuickEstimator from "@/components/QuickEstimator";
 import { useLanguage } from "@/context/LanguageContext";
+import { siteConfig } from "@/data/siteConfig";
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.85.12V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.48 6.27 6.27 0 0 0 1.86-4.47V8.58a8.27 8.27 0 0 0 4.84 1.56V6.69z" />
+  </svg>
+);
 
 export default function ContactPage() {
   const { isRTL, t } = useLanguage();
@@ -56,7 +72,7 @@ I would like to request an on-site survey and turnkey service estimate:
 
 Please let me know when you can schedule an on-site engineering assessment.`;
 
-    const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
     if (typeof window !== "undefined") {
       window.open(whatsappUrl, "_blank");
     }
@@ -139,7 +155,7 @@ Please let me know when you can schedule an on-site engineering assessment.`;
                     <input
                       type="tel"
                       required
-                      placeholder={isRTL ? "0300 1234567" : "e.g. 0300 1234567"}
+                      placeholder={siteConfig.phoneDisplay}
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400"
@@ -240,7 +256,7 @@ Please let me know when you can schedule an on-site engineering assessment.`;
                     type="text"
                     placeholder={
                       isRTL
-                        ? "مثال: ١٠ نوافذ زجاجية، أو مطبخ كامل ١٢×١٤ قدم، أو شترين بنك"
+                        ? "مثال: ١٠ نوافذ زجاجية، أو مطبخ كامل، أو شترين بنك"
                         : "e.g. 10 Glazed Windows (5x4 ft), 1 Kitchen Fit-Out, or 2 Bank Shutters"
                     }
                     value={formData.dimensions}
@@ -304,6 +320,60 @@ Please let me know when you can schedule an on-site engineering assessment.`;
 
           {/* Right Column: Contact Channels & Emergency Repair Hotline */}
           <div className="lg:col-span-5 space-y-6">
+            {/* Social Media Channels Official Card */}
+            <div className="charcoal-gradient-card rounded-2xl p-6 border border-gold-400/40 shadow-xl space-y-4">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-gold-400 block">
+                {isRTL ? "قنواتنا الرقمية الرسمية" : "Official Social Channels"}
+              </span>
+              <h4 className="text-base font-heading font-bold text-white">
+                {isRTL ? "تابع أعمالنا وتوثيق المشاريع" : "Follow Our Architectural Portfolio"}
+              </h4>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                {isRTL
+                  ? "شاهد جولات الفيديو الحية، اختبارات الكبس ومحركات الشترات، وتوثيق المشاريع في الفلل السكنية الفاخرة."
+                  : "Watch video walkthroughs, shutter motor testing, and live on-site installation reels across our official channels."}
+              </p>
+
+              <div className="grid grid-cols-2 gap-2.5 pt-1">
+                <a
+                  href={siteConfig.socials.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-charcoal-900 border border-charcoal-700 hover:border-red-500/50 hover:bg-red-500/10 transition-all flex items-center gap-2 text-xs font-semibold text-slate-200"
+                >
+                  <Youtube className="w-4 h-4 text-red-500 shrink-0" />
+                  <span>YouTube</span>
+                </a>
+                <a
+                  href={siteConfig.socials.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-charcoal-900 border border-charcoal-700 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all flex items-center gap-2 text-xs font-semibold text-slate-200"
+                >
+                  <Facebook className="w-4 h-4 text-blue-500 shrink-0" />
+                  <span>Facebook</span>
+                </a>
+                <a
+                  href={siteConfig.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-charcoal-900 border border-charcoal-700 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all flex items-center gap-2 text-xs font-semibold text-slate-200"
+                >
+                  <Instagram className="w-4 h-4 text-pink-500 shrink-0" />
+                  <span>Instagram</span>
+                </a>
+                <a
+                  href={siteConfig.socials.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-charcoal-900 border border-charcoal-700 hover:border-slate-300 hover:bg-white/10 transition-all flex items-center gap-2 text-xs font-semibold text-slate-200"
+                >
+                  <TikTokIcon className="w-4 h-4 text-white shrink-0" />
+                  <span>TikTok</span>
+                </a>
+              </div>
+            </div>
+
             {/* Emergency Hotline Card */}
             <div className="charcoal-gradient-card rounded-2xl p-6 border border-rose-500/40 shadow-xl space-y-4">
               <div className="flex items-center gap-3">
@@ -325,11 +395,13 @@ Please let me know when you can schedule an on-site engineering assessment.`;
                   : "Stuck commercial rolling shutter, broken torsion spring, or burnt motor during business hours? Call our emergency service line for immediate technician dispatch."}
               </p>
               <a
-                href="tel:+923001234567"
+                href={`tel:${siteConfig.phoneRaw}`}
                 className="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-colors"
               >
                 <PhoneCall className="w-4 h-4 shrink-0" />
-                <span dir="ltr">{isRTL ? "اتصال فوري: +92 300 1234567" : "Call Emergency Dispatch: +92 300 1234567"}</span>
+                <span dir="ltr">
+                  {isRTL ? `اتصال فوري: ${siteConfig.phoneDisplay}` : `Call Emergency Dispatch: ${siteConfig.phoneDisplay}`}
+                </span>
               </a>
             </div>
 
@@ -362,8 +434,8 @@ Please let me know when you can schedule an on-site engineering assessment.`;
                     <span className="font-semibold text-white block">
                       {isRTL ? "الهاتف المباشر والتسعير" : "Hotline & Quotes"}
                     </span>
-                    <a href="tel:+923001234567" className="text-slate-400 hover:text-white transition-colors" dir="ltr">
-                      +92 300 1234567
+                    <a href={`tel:${siteConfig.phoneRaw}`} className="text-slate-400 hover:text-white transition-colors" dir="ltr">
+                      {siteConfig.phoneDisplay}
                     </a>
                   </div>
                 </div>
@@ -375,7 +447,7 @@ Please let me know when you can schedule an on-site engineering assessment.`;
                       {isRTL ? "محادثة الواتساب المباشرة" : "WhatsApp Direct Chat"}
                     </span>
                     <a
-                      href="https://wa.me/923001234567"
+                      href={`https://wa.me/${siteConfig.whatsappNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-400 hover:underline"

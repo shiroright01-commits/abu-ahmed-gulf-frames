@@ -62,7 +62,7 @@ export default function RealWorkGallery() {
           </div>
 
           <a
-            href={`https://wa.me/923001234567?text=${encodeURIComponent(
+            href={`https://wa.me/96594462328?text=${encodeURIComponent(
               isRTL
                 ? "مرحباً المعلم أبو أحمد، أود الاستفسار والمشاورة بخصوص مشاريعكم وأعمالكم المنجزة."
                 : "Hello Abu Ahmed Gulf Frames, I would like to consult regarding your completed projects."
@@ -187,7 +187,7 @@ export default function RealWorkGallery() {
                   </button>
 
                   <a
-                    href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                    href={`https://wa.me/96594462328?text=${encodeURIComponent(
                       isRTL
                         ? `مرحباً المعلم أبو أحمد، أود الاستفسار بخصوص هذا العمل الموثق: "${project.title}" (${project.clientLocation}).`
                         : `Hello Abu Ahmed Gulf Frames, I would like to consult about this real installation: "${project.title}" (${project.clientLocation}).`

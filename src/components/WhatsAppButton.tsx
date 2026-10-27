@@ -41,7 +41,7 @@ export default function WhatsAppButton() {
 
       {/* Pulsing Button */}
       <a
-        href={`https://wa.me/923001234567?text=${prefilledMessage}`}
+        href={`https://wa.me/96594462328?text=${prefilledMessage}`}
         target="_blank"
         rel="noopener noreferrer"
         className="relative bg-emerald-500 hover:bg-emerald-400 text-charcoal-950 p-3.5 rounded-2xl shadow-xl shadow-emerald-500/25 hover:scale-110 active:scale-95 transition-all flex items-center justify-center"

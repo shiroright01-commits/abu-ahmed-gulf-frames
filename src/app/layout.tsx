@@ -78,7 +78,7 @@ export default function RootLayout({
     "name": "Abu Ahmed Gulf Frames",
     "image": "https://abu-ahmed-gulf-frames.com/real_projects/05_luxury_woodgrain_entrance_door.jpg",
     "description": "Master Aluminum Craftsman with 20+ years experience specializing in bespoke architectural glazing, luxury aluminum kitchens, and motorized security shutters.",
-    "telephone": "+923001234567",
+    "telephone": "+96594462328",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",

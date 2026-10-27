@@ -143,7 +143,7 @@ export default function ProjectCard({
               </button>
 
               <a
-                href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                href={`https://wa.me/96594462328?text=${encodeURIComponent(
                   isRTL
                     ? `مرحباً المعلم أبو أحمد، اطلعت على مشروعكم المعماري: "${project.title}" (${project.clientLocation}) وأود الاستفسار عن طلب خدمة وتفصيل مماثل.`
                     : `Hello Abu Ahmed Gulf Frames, I saw your project: ${project.title} (${project.clientLocation}) and would like to consult for a similar service.`

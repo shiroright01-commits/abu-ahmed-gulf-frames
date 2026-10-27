@@ -38,7 +38,7 @@ export default function VideoShowcase() {
         </div>
 
         <a
-          href={`https://wa.me/923001234567?text=${encodeURIComponent(
+          href={`https://wa.me/96594462328?text=${encodeURIComponent(
             isRTL
               ? "مرحباً المعلم أبو أحمد، أود طلب المزيد من مقاطع الفيديو لمشاريعكم المنجزة."
               : "Hello Abu Ahmed Gulf Frames, I would like to request more video walkthroughs of your completed projects."
@@ -151,7 +151,7 @@ export default function VideoShowcase() {
                 {selectedVideo.description}
               </p>
               <a
-                href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                href={`https://wa.me/96594462328?text=${encodeURIComponent(
                   isRTL
                     ? `مرحباً المعلم أبو أحمد، اطلعت على فيديو: "${selectedVideo.title}" وأود استشارتكم لتنفيذ مشروع مشابه.`
                     : `Hello Abu Ahmed Gulf Frames, I saw your video: ${selectedVideo.title} and would like to consult for a similar site service.`

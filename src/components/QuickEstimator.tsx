@@ -70,7 +70,7 @@ I would like to book an on-site survey and request a service estimate for:
 - Project Notes: ${notes || "None"}
 Please confirm your availability for a technical site survey.`;
 
-    return `https://wa.me/923001234567?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/96594462328?text=${encodeURIComponent(text)}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -237,7 +237,7 @@ Please confirm your availability for a technical site survey.`;
           </label>
           <input
             type="tel"
-            placeholder={isRTL ? "0300 1234567" : "e.g. 0300 1234567"}
+            placeholder="+965 9446 2328"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 transition-colors"

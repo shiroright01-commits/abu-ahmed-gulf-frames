@@ -196,7 +196,7 @@ export default function ImageLightboxModal({
 
           <div className="flex items-center gap-3 shrink-0">
             <a
-              href={`https://wa.me/923001234567?text=${whatsappMessage}`}
+              href={`https://wa.me/96594462328?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-charcoal-950 font-bold px-5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"

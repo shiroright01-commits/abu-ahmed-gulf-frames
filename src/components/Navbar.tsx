@@ -12,8 +12,23 @@ import {
   ArrowRight,
   Compass,
   Globe,
+  Youtube,
+  Facebook,
+  Instagram,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { siteConfig } from "@/data/siteConfig";
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.85.12V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.48 6.27 6.27 0 0 0 1.86-4.47V8.58a8.27 8.27 0 0 0 4.84 1.56V6.69z" />
+  </svg>
+);
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +45,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Bar: Contact & Authority */}
+      {/* Top Bar: Contact, Socials & Authority */}
       <div className="bg-[#0B0F14]/90 border-b border-charcoal-800 text-xs text-slate-400 py-2 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
           <div className="flex items-center gap-6">
@@ -51,7 +66,48 @@ export default function Navbar() {
               </span>
             </span>
           </div>
-          <div className="flex items-center gap-4 sm:gap-6">
+
+          <div className="flex items-center gap-3 sm:gap-5">
+            {/* Social Media Links in Top Bar */}
+            <div className="hidden sm:flex items-center gap-2 border-r border-charcoal-800 pr-3">
+              <a
+                href={siteConfig.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-red-500 transition-colors p-1"
+                aria-label="YouTube Channel"
+              >
+                <Youtube className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={siteConfig.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-blue-500 transition-colors p-1"
+                aria-label="Facebook Page"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={siteConfig.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-pink-500 transition-colors p-1"
+                aria-label="Instagram Profile"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={siteConfig.socials.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white transition-colors p-1"
+                aria-label="TikTok Account"
+              >
+                <TikTokIcon className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
             {/* Quick Language Toggle in Topbar */}
             <div className="flex items-center gap-1 text-[11px] font-semibold bg-charcoal-800/80 px-2 py-0.5 rounded-lg border border-charcoal-700">
               <Globe className="w-3 h-3 text-gold-400" />
@@ -77,16 +133,16 @@ export default function Navbar() {
             </div>
 
             <a
-              href="tel:+923001234567"
+              href={`tel:${siteConfig.phoneRaw}`}
               className="hover:text-gold-400 transition-colors hidden sm:flex items-center gap-1.5 text-slate-300 font-medium"
             >
               <PhoneCall className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-              <span dir="ltr">+92 300 1234567</span>
+              <span dir="ltr">{siteConfig.phoneDisplay}</span>
             </a>
             <a
-              href={`https://wa.me/923001234567?text=${encodeURIComponent(
+              href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
                 isRTL
-                  ? "مرحباً، أود حجز معاينة موقع واستشارة فنية مع المعلم أبو أحمد."
+                  ? "مرحباً المعلم أبو أحمد، أود حجز معاينة موقع واستشارة فنية مع المعلم أبو أحمد."
                   : "Hello Abu Ahmed Gulf Frames, I would like to book a site consultation."
               )}`}
               target="_blank"
@@ -269,7 +325,47 @@ export default function Navbar() {
               })}
             </nav>
 
-            <div className="pt-4 border-t border-charcoal-800 flex flex-col gap-3">
+            {/* Social Links in Mobile Menu */}
+            <div className="flex items-center justify-center gap-4 py-2 border-t border-charcoal-800 text-slate-300">
+              <a
+                href={siteConfig.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-charcoal-800 hover:text-red-500 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href={siteConfig.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-charcoal-800 hover:text-blue-500 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href={siteConfig.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-charcoal-800 hover:text-pink-500 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href={siteConfig.socials.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-charcoal-800 hover:text-white transition-colors"
+                aria-label="TikTok"
+              >
+                <TikTokIcon className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="pt-2 border-t border-charcoal-800 flex flex-col gap-3">
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
@@ -281,11 +377,11 @@ export default function Navbar() {
                 />
               </Link>
               <a
-                href="tel:+923001234567"
+                href={`tel:${siteConfig.phoneRaw}`}
                 className="bg-charcoal-800 border border-charcoal-700 text-white font-medium px-4 py-2.5 rounded-xl text-center text-xs flex items-center justify-center gap-2"
               >
                 <PhoneCall className="w-4 h-4 text-gold-400 shrink-0" />
-                <span dir="ltr">+92 300 1234567</span>
+                <span dir="ltr">{siteConfig.phoneDisplay}</span>
               </a>
             </div>
           </div>

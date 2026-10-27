@@ -31,7 +31,7 @@ I would like to request an on-site survey and turnkey service estimate:
 - Additional Specifications: ${notes || "None"}
 Please get in touch with your survey schedule and preliminary estimates.`;
 
-    const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(text)}`;
+    const whatsappUrl = `https://wa.me/96594462328?text=${encodeURIComponent(text)}`;
     if (typeof window !== "undefined") {
       window.open(whatsappUrl, "_blank");
     }
@@ -87,7 +87,7 @@ Please get in touch with your survey schedule and preliminary estimates.`;
               <input
                 type="tel"
                 required
-                placeholder="0300 1234567"
+                placeholder="+965 9446 2328"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400"

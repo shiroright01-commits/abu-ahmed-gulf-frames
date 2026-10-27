@@ -97,7 +97,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         </Link>
 
         <a
-          href={`https://wa.me/923001234567?text=${encodeURIComponent(
+          href={`https://wa.me/96594462328?text=${encodeURIComponent(
             isRTL
               ? `مرحباً المعلم أبو أحمد، أود الاستفسار عن تفاصيل وأسعار خدمة: ${service.title}`
               : `Hello Abu Ahmed Gulf Frames, I would like to inquire about your ${service.title}`
