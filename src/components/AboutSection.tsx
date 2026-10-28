@@ -224,6 +224,18 @@ export default function AboutSection() {
                     </a>
                   </div>
                 </div>
+
+                <div className="flex items-start gap-2.5 text-slate-300">
+                  <ShieldCheck className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-white block">
+                      {isRTL ? "نطاق تقديم الخدمة:" : "Service Coverage:"}
+                    </span>
+                    <span className="text-slate-400 text-[11px]">
+                      {isRTL ? siteConfig.serviceCoverageAr : siteConfig.serviceCoverageEn}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Direct Google Maps Link Action */}

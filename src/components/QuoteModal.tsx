@@ -97,7 +97,7 @@ Please get in touch with your survey schedule and preliminary estimates.`;
               <label className="block text-slate-300 font-medium mb-1">City / Location</label>
               <input
                 type="text"
-                placeholder="e.g. Lahore / Islamabad"
+                placeholder="e.g. Farwaniya, Hawalli, or Kuwait City"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400"

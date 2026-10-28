@@ -62,7 +62,7 @@ export default function ProjectsPage() {
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
             {t(
               "projectsPageSubtitle",
-              "We deliver bespoke commissioned services, not off-the-shelf retail products. Explore our 30 verified case studies showcasing authentic on-site installations, precision workshop milling, and certified master framing across Pakistan."
+              "We deliver bespoke commissioned services, not off-the-shelf retail products. Explore our 30 verified case studies showcasing authentic on-site installations, precision workshop milling, and certified master framing across Kuwait."
             )}
           </p>
         </div>

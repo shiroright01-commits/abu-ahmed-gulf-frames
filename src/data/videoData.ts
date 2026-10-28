@@ -18,7 +18,7 @@ export const videoData: VideoItem[] = [
     thumbnail:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
     videoUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ", // Embed placeholder
-    location: "Phase 6 DHA, Lahore",
+    location: "Al-Salam, South Surra, Kuwait",
     description:
       "On-site architectural walkthrough showcasing floor-to-ceiling thermal-break sliding portals and zero-threshold flush tracks.",
   },
@@ -30,7 +30,7 @@ export const videoData: VideoItem[] = [
     thumbnail:
       "https://images.unsplash.com/photo-1541888946425-d0fbb186f5f7?auto=format&fit=crop&w=1000&q=80",
     videoUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
-    location: "Gulberg III Plaza, Lahore",
+    location: "Shuwaikh Industrial Area, Kuwait",
     description:
       "Live testing of 18 Italian tubular motors operated via group remote transmitter, followed by manual hand crank power-cut override drill.",
   },
@@ -42,7 +42,7 @@ export const videoData: VideoItem[] = [
     thumbnail:
       "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80",
     videoUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
-    location: "Bahria Town, Islamabad",
+    location: "Mishref, Hawalli Governorate, Kuwait",
     description:
       "Detailed inspection of waterproof aluminum hollow carcass, fluted tinted glass cabinetry, and Champagne Gold J-pull handles.",
   },
@@ -54,7 +54,7 @@ export const videoData: VideoItem[] = [
     thumbnail:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
     videoUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
-    location: "Industrial Estate, Faisalabad",
+    location: "Al-Rai Commercial District, Kuwait",
     description:
       "Rigging heavy structural 6063-T6 aluminum mullions and Low-E double-glazed reflective glass units on a 4-story corporate facade.",
   },

@@ -61,7 +61,7 @@ export default function HeroShowcaseCard() {
                 <span>{t("heroShowcaseBadge", "Verified Real Commission")}</span>
               </span>
               <span className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-black/80 text-slate-200 backdrop-blur-md border border-charcoal-700">
-                {t("heroShowcaseLocation", "Model Town, Lahore")}
+                {t("heroShowcaseLocation", "Abdullah Al-Salem, Kuwait")}
               </span>
             </div>
 

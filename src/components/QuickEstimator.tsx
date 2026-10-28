@@ -250,7 +250,7 @@ Please confirm your availability for a technical site survey.`;
           </label>
           <input
             type="text"
-            placeholder={isRTL ? "مثال: موقع في لاهور، بحاجة لمعاينة ميدانية" : "e.g. Lahore site, need laser measurement"}
+            placeholder={isRTL ? "مثال: فيلا في حولي أو الفروانية، بحاجة لمعاينة ميدانية" : "e.g. Villa in Hawalli or Farwaniya, need laser survey"}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 transition-colors"

@@ -33,7 +33,7 @@ export const translations = {
 
     // Hero Showcase Card
     heroShowcaseBadge: "Verified Real Commission",
-    heroShowcaseLocation: "Model Town, Lahore",
+    heroShowcaseLocation: "Abdullah Al-Salem, Kuwait",
     heroShowcaseTitle: "Sublimated Walnut Door with Wrought-Iron Grille",
     heroShowcaseTag: "Hand-Crimped",
     heroShowcaseDesc:
@@ -124,7 +124,7 @@ export const translations = {
 
     // Footer
     footerDesc:
-      "Master Architectural Craftsman with 20+ years of Gulf and Pakistani experience. Delivering bespoke structural aluminum framing, wood-sublimation entrance doors, waterproof kitchens, and automated shutter systems.",
+      "Master Architectural Craftsman with 20+ years of Gulf experience, proudly serving all governorates across the State of Kuwait. Delivering bespoke structural aluminum framing, luxury entrance doors, waterproof kitchens, and automated shutter systems.",
     footerServicesTitle: "Architectural Services",
     footerQuickLinksTitle: "Quick Navigation",
     footerContactTitle: "Master Studio Contact",
@@ -133,7 +133,7 @@ export const translations = {
     // Projects Page
     projectsPageTitle: "Architectural Service Portfolio",
     projectsPageSubtitle:
-      "We deliver bespoke commissioned services, not off-the-shelf retail products. Explore our 30 verified case studies showcasing authentic on-site installations, precision workshop milling, and certified master framing across Pakistan.",
+      "We deliver bespoke commissioned services, not off-the-shelf retail products. Explore our 30 verified case studies showcasing authentic on-site installations, precision workshop milling, and certified master framing across Kuwait.",
 
     // Contact Page
     contactPageBadge: "Direct Craftsman Consultation",
@@ -182,7 +182,7 @@ export const translations = {
 
     // Hero Showcase Card
     heroShowcaseBadge: "مشروع حقيقي معتمد",
-    heroShowcaseLocation: "موديل تاون، لاهور",
+    heroShowcaseLocation: "ضاحية عبد الله السالم، الكويت",
     heroShowcaseTitle: "باب ألمنيوم بخشب الجوز مع حماية حديد مشغول",
     heroShowcaseTag: "كبس يدوي متقن",
     heroShowcaseDesc:
@@ -273,7 +273,7 @@ export const translations = {
 
     // Footer
     footerDesc:
-      "معلم حرفي ألمنيوم معماري بخبرة تفوق ٢٠ عاماً في الخليج وباكستان. متخصصون في تفصيل وتركيب إطارات الألمنيوم الإنشائي، أبواب المداخل المعزولة، مطابخ الألمنيوم المقاومة للماء، وشترات النوافذ الأوتوماتيكية.",
+      "معلم حرفي ألمنيوم معماري بخبرة تفوق ٢٠ عاماً في الكويت والخليج. متخصصون في تفصيل وتركيب إطارات الألمنيوم الإنشائي، أبواب المداخل المعزولة، مطابخ الألمنيوم المقاومة للماء، وشترات النوافذ الأوتوماتيكية في كافة مناطق ومحافظات الكويت.",
     footerServicesTitle: "خدماتنا المعمارية",
     footerQuickLinksTitle: "روابط سريعة",
     footerContactTitle: "التواصل مع الورشة والاستوديو",

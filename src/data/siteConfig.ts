@@ -10,6 +10,24 @@ export const siteConfig = {
   locationDetailsEn: "Industrial Area, Farwaniya Governorate, Kuwait",
   locationDetailsAr: "المنطقة الصناعية، محافظة الفروانية، الكويت",
   googleMapsUrl: "https://maps.app.goo.gl/vq9N7PmYdmJ1Tz2B6",
+  serviceCoverageEn: "State of Kuwait (All Governorates & Residential Areas)",
+  serviceCoverageAr: "دولة الكويت (جميع المحافظات والمناطق السكنية والتجارية)",
+  governoratesEn: [
+    "Capital Governorate (Kuwait City, Abdullah Al-Salem, Shamiya)",
+    "Hawalli Governorate (Mishref, Bayan, Salwa, South Surra)",
+    "Farwaniya Governorate (Farwaniya, Khaitan, Al-Andalus, Al-Rai)",
+    "Al Ahmadi Governorate (Sabah Al-Ahmad, Fintas, Mangaf, Egaila)",
+    "Al Jahra Governorate (Al-Jahra, Mutlaa City)",
+    "Mubarak Al-Kabeer Governorate (Sabah Al-Salem, Al-Qusour)",
+  ],
+  governoratesAr: [
+    "محافظة العاصمة (مدينة الكويت، ضاحية عبد الله السالم، الشامية)",
+    "محافظة حولي (مشرف، بيان، سلوى، جنوب السرة)",
+    "محافظة الفروانية (الفروانية، خيطان، الأندلس، الري)",
+    "محافظة الأحمدي (مدينة صباح الأحمد، الفنطاس، المنقف، العقيلة)",
+    "محافظة الجهراء (الجهراء، مدينة المطلاع)",
+    "محافظة مبارك الكبير (صباح السالم، القصور)",
+  ],
   bioAr:
     "فني المنيوم خبره ٢٠ سنه ، شبابيك المنيوم + مطابخ + ابواب المنيوم + ابواب شتر و مكائن شتر اوتوماتيك و يدوي + جميع اعمال الالمنيوم",
   bioEn:

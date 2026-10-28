@@ -25,18 +25,24 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://abu-ahmed-gulf-frames.com"),
-  title: "Abu Ahmed Gulf Frames | Architectural Aluminum Engineering & Portfolio",
+  title: "Abu Ahmed Gulf Frames | Master Aluminum Technician Kuwait (20+ Years)",
   description:
-    "Master Aluminum Craftsman with 20 years experience. Bespoke architectural aluminum framing, custom structural glazing, luxury kitchen fabrication, and automated shutter installation services.",
+    "Master Aluminum Craftsman with 20+ years experience in Kuwait. Bespoke architectural aluminum windows, luxury modular kitchens, heavy-duty entrance doors, and automated shutter mechanisms across all Kuwait governorates.",
   keywords: [
     "Abu Ahmed Gulf Frames",
-    "Architectural Aluminum Services",
-    "Custom Aluminum Framing",
-    "Bespoke Glazing Services",
-    "Commercial Shutter Installation",
-    "Aluminum Kitchen Fit-Out Services",
-    "Automatic Shutter Maintenance",
-    "Master Aluminum Technician",
+    "فني المنيوم الكويت",
+    "شترات الكويت",
+    "مطابخ المنيوم الكويت",
+    "ابواب المنيوم الكويت",
+    "شبابيك المنيوم الكويت",
+    "تصليح شتر الكويت",
+    "معلم المنيوم الفروانية",
+    "فني المنيوم حولي",
+    "Aluminum Technician Kuwait",
+    "Architectural Aluminum Kuwait",
+    "Kuwait Motorized Shutters",
+    "Bespoke Glazing Services Kuwait",
+    "Custom Aluminum Framing Kuwait",
   ],
   authors: [{ name: "Abu Ahmed Gulf Frames" }],
   icons: {
@@ -92,6 +98,10 @@ export default function RootLayout({
       "longitude": "47.9603"
     },
     "hasMap": "https://maps.app.goo.gl/vq9N7PmYdmJ1Tz2B6",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Kuwait"
+    },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

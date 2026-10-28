@@ -170,7 +170,7 @@ Please let me know when you can schedule an on-site engineering assessment.`;
                     </label>
                     <input
                       type="text"
-                      placeholder={isRTL ? "مثال: لاهور / إسلام آباد" : "e.g. Lahore / Islamabad"}
+                      placeholder={isRTL ? "مثال: الفروانية، حولي، أو العاصمة" : "e.g. Farwaniya, Hawalli, or Kuwait City"}
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                       className="w-full bg-charcoal-950 border border-charcoal-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold-400"

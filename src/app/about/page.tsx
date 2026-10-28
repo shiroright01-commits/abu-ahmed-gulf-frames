@@ -239,6 +239,18 @@ export default function AboutPage() {
                   </a>
                 </div>
               </div>
+
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold text-white block">
+                    {isRTL ? "نطاق تقديم الخدمة:" : "Service Coverage:"}
+                  </span>
+                  <span className="text-slate-300">
+                    {isRTL ? siteConfig.serviceCoverageAr : siteConfig.serviceCoverageEn}
+                  </span>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
