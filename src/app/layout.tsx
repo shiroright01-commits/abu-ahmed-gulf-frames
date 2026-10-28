@@ -50,7 +50,10 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   verification: {
-    google: "wUm5GyH7qI9-IfQAx67YcB3D8KPv4l9oo34OWtH9xIg",
+    google: [
+      "JZt68VMlODaItqIeXlpKXhop_Gf1b3KH6orQ8vuELK8",
+      "wUm5GyH7qI9-IfQAx67YcB3D8KPv4l9oo34OWtH9xIg",
+    ],
   },
   openGraph: {
     title: "Abu Ahmed Gulf Frames | Master Aluminum Architectural Portfolio",
@@ -118,6 +121,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
       <head>
+        <meta
+          name="google-site-verification"
+          content="JZt68VMlODaItqIeXlpKXhop_Gf1b3KH6orQ8vuELK8"
+        />
         <meta
           name="google-site-verification"
           content="wUm5GyH7qI9-IfQAx67YcB3D8KPv4l9oo34OWtH9xIg"
