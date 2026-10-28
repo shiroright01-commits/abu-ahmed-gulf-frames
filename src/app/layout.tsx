@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  verification: {
+    google: "wUm5GyH7qI9-IfQAx67YcB3D8KPv4l9oo34OWtH9xIg",
+  },
   openGraph: {
     title: "Abu Ahmed Gulf Frames | Master Aluminum Architectural Portfolio",
     description: "Turnkey architectural aluminum engineering services. Bespoke entrance doors, thermal-break glazing, luxury modular kitchens, and automated shutters.",
@@ -115,6 +118,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
       <head>
+        <meta
+          name="google-site-verification"
+          content="wUm5GyH7qI9-IfQAx67YcB3D8KPv4l9oo34OWtH9xIg"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
