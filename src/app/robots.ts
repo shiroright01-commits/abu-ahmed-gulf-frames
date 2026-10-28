@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://abu-ahmed-gulf-frames.com/sitemap.xml",
+    sitemap: "https://abu-ahmed-gulf-frames.vercel.app/sitemap.xml",
   };
 }

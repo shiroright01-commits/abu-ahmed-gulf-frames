@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abu-ahmed-gulf-frames.com"),
+  metadataBase: new URL("https://abu-ahmed-gulf-frames.vercel.app"),
   title: "Abu Ahmed Gulf Frames | Master Aluminum Technician Kuwait (20+ Years)",
   description:
     "Master Aluminum Craftsman with 20+ years experience in Kuwait. Bespoke architectural aluminum windows, luxury modular kitchens, heavy-duty entrance doors, and automated shutter mechanisms across all Kuwait governorates.",
