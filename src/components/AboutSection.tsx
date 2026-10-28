@@ -136,14 +136,17 @@ export default function AboutSection() {
                 <span>{isRTL ? "البيان الفني الرسمي المعتمد" : "Official Technical Credentials"}</span>
               </div>
 
-              {/* Exact Arabic Text Highlight */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-charcoal-950/90 border border-gold-400/30 space-y-3">
-                <p className="text-lg sm:text-2xl font-heading font-bold text-white leading-relaxed text-balance" dir="rtl">
-                  &ldquo;{siteConfig.bioAr}&rdquo;
-                </p>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-sans" dir="ltr">
-                  &ldquo;{siteConfig.bioEn}&rdquo;
-                </p>
+              {/* Master Craftsman Technical Scope & Credentials */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-charcoal-950/90 border border-gold-400/30">
+                {isRTL ? (
+                  <p className="text-lg sm:text-2xl font-heading font-bold text-white leading-relaxed text-balance" dir="rtl">
+                    &ldquo;{siteConfig.bioAr}&rdquo;
+                  </p>
+                ) : (
+                  <p className="text-lg sm:text-2xl font-heading font-bold text-white leading-relaxed font-sans" dir="ltr">
+                    &ldquo;{siteConfig.bioEn}&rdquo;
+                  </p>
+                )}
               </div>
 
               {/* Specialties Pill Grid */}

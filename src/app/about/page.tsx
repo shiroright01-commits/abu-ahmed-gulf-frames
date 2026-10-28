@@ -148,15 +148,17 @@ export default function AboutPage() {
               <span>{isRTL ? "البيان الفني الرسمي المعتمد" : "Official Technical Scope & Credentials"}</span>
             </div>
 
-            {/* Client's Exact Arabic Text Block */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-charcoal-950/90 border border-gold-400/40 shadow-inner space-y-4">
-              <p className="text-xl sm:text-3xl font-heading font-bold text-white leading-relaxed" dir="rtl">
-                &ldquo;{siteConfig.bioAr}&rdquo;
-              </p>
-              <div className="h-px bg-charcoal-800" />
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans" dir="ltr">
-                &ldquo;{siteConfig.bioEn}&rdquo;
-              </p>
+            {/* Master Craftsman Technical Scope & Credentials */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-charcoal-950/90 border border-gold-400/40 shadow-inner">
+              {isRTL ? (
+                <p className="text-xl sm:text-3xl font-heading font-bold text-white leading-relaxed" dir="rtl">
+                  &ldquo;{siteConfig.bioAr}&rdquo;
+                </p>
+              ) : (
+                <p className="text-xl sm:text-3xl font-heading font-bold text-white leading-relaxed font-sans" dir="ltr">
+                  &ldquo;{siteConfig.bioEn}&rdquo;
+                </p>
+              )}
             </div>
 
             {/* 5 Core Scope Items Grid */}
