@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/services/architectural-aluminum-windows`,
@@ -47,13 +47,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/automated-motorized-shutters`,
+      url: `${baseUrl}/services/automatic-manual-shutter-systems`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/curtain-walls-specialty-fabrication`,
+      url: `${baseUrl}/services/bespoke-aluminum-architectural-fabrication`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
