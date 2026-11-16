@@ -7,6 +7,8 @@ import ServiceCard from "@/components/ServiceCard";
 import ShutterComparison from "@/components/ShutterComparison";
 import AboutSection from "@/components/AboutSection";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
+import KuwaitServiceAreas from "@/components/KuwaitServiceAreas";
+import KuwaitFAQSection from "@/components/KuwaitFAQSection";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import DesignJourney from "@/components/DesignJourney";
 import VideoShowcase from "@/components/VideoShowcase";
@@ -389,6 +391,12 @@ export default function HomePage() {
 
       {/* About Master Craftsman & Trust Pillars */}
       <AboutSection />
+
+      {/* Kuwait Service Areas Hub (Local SEO Statewide Coverage) */}
+      <KuwaitServiceAreas />
+
+      {/* Kuwait Aluminum & Shutter FAQ Section (AEO & Featured Snippets) */}
+      <KuwaitFAQSection />
 
       {/* High-Converting CTA Banner */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-8">
